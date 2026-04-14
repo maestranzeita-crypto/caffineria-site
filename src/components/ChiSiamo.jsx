@@ -1,89 +1,128 @@
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
-
-function FadeIn({ children, delay = 0, direction = 'up' }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: direction === 'up' ? 30 : 0, x: direction === 'left' ? -30 : direction === 'right' ? 30 : 0 }}
-      animate={inView ? { opacity: 1, y: 0, x: 0 } : {}}
-      transition={{ duration: 0.8, delay, ease: 'easeOut' }}
-    >
-      {children}
-    </motion.div>
-  )
-}
+import { Reveal, FadeIn } from './Motion'
 
 export default function ChiSiamo() {
   return (
     <section
       id="chi-siamo"
-      className="py-24 md:py-36"
-      style={{ background: '#FDF8F0' }}
+      style={{
+        background: '#FDF8F0',
+        padding: '120px 32px',
+      }}
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
-          {/* Left: testo */}
-          <div>
-            <FadeIn>
-              <p className="text-xs font-semibold tracking-[0.3em] uppercase mb-4" style={{ color: '#722F37' }}>
-                La nostra storia
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h2 className="font-display text-4xl md:text-5xl leading-tight mb-8" style={{ color: '#3C2415' }}>
-                Nate dalla nostalgia,<br />
-                <em>costruite con amore</em>
-              </h2>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="text-base md:text-lg leading-relaxed mb-6" style={{ color: '#3C2415', opacity: 0.8 }}>
-                Caffineria nasce da un gruppo di ragazze italiane di ritorno dall'estero. Dopo anni fuori, ci siamo ritrovate a sentire la mancanza di due cose semplici: il caffè al bar la mattina e il vino con gli amici la sera.
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.3}>
-              <p className="text-base md:text-lg leading-relaxed mb-10" style={{ color: '#3C2415', opacity: 0.8 }}>
-                Così abbiamo deciso di creare il posto che volevamo trovare. Non solo un locale, ma un rituale quotidiano — dalla prima brioche all'ultimo calice. Milano ci ha accolte, e noi ci mettiamo testa, corpo e anima.
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.4}>
-              <blockquote
-                className="font-display text-2xl md:text-3xl italic border-l-4 pl-6"
-                style={{ color: '#722F37', borderColor: '#722F37' }}
-              >
-                "Ci mettiamo testa, corpo e anima."
-              </blockquote>
-            </FadeIn>
-          </div>
+      <div style={{
+        maxWidth: 1100,
+        margin: '0 auto',
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gap: 80,
+        alignItems: 'center',
+      }}
+        className="chi-siamo-grid"
+      >
+        {/* Testo */}
+        <div>
+          <Reveal delay={0}>
+            <p style={{
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: '0.3em',
+              textTransform: 'uppercase',
+              color: '#722F37',
+              marginBottom: 20,
+            }}>
+              La nostra storia
+            </p>
+          </Reveal>
 
-          {/* Right: immagine caffè */}
-          <FadeIn delay={0.2} direction="right">
-            <div className="relative">
-              <div
-                className="absolute -top-4 -left-4 w-full h-full rounded-2xl"
-                style={{ background: '#F5EDD8' }}
-              />
-              <img
-                src="/img2.jpeg"
-                alt="Caffè Caffineria"
-                className="relative rounded-2xl w-full object-cover shadow-xl"
-                style={{ aspectRatio: '4/5', maxHeight: 560 }}
-              />
-              {/* badge */}
-              <div
-                className="absolute -bottom-6 -right-6 w-28 h-28 rounded-full flex flex-col items-center justify-center shadow-lg"
-                style={{ background: '#722F37' }}
-              >
-                <span className="font-display text-3xl" style={{ color: '#FDF8F0' }}>☕</span>
-                <span className="text-xs font-semibold tracking-wide mt-1" style={{ color: '#FDF8F0' }}>dal 2020</span>
-              </div>
-            </div>
-          </FadeIn>
+          <Reveal delay={0.08}>
+            <h2 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
+              fontWeight: 600,
+              color: '#3C2415',
+              lineHeight: 1.25,
+              marginBottom: 28,
+            }}>
+              Nate dalla nostalgia,<br />
+              <em>costruite con amore.</em>
+            </h2>
+          </Reveal>
+
+          <Reveal delay={0.16}>
+            <p style={{
+              fontSize: 16,
+              lineHeight: 1.8,
+              color: 'rgba(60,36,21,0.72)',
+              marginBottom: 20,
+            }}>
+              Caffineria nasce da un gruppo di ragazze italiane di ritorno dall'estero. Dopo anni fuori, ci siamo ritrovate a sentire la mancanza di due cose semplici: il caffè al bar la mattina e il vino con gli amici la sera.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.22}>
+            <p style={{
+              fontSize: 16,
+              lineHeight: 1.8,
+              color: 'rgba(60,36,21,0.72)',
+              marginBottom: 40,
+            }}>
+              Così abbiamo deciso di creare il posto che volevamo trovare — non solo un locale, ma un rituale quotidiano. Dalla prima brioche all'ultimo calice.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.28}>
+            <blockquote style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: 22,
+              fontStyle: 'italic',
+              color: '#722F37',
+              borderLeft: '3px solid #722F37',
+              paddingLeft: 24,
+              margin: 0,
+              lineHeight: 1.4,
+            }}>
+              "Ci mettiamo testa, corpo e anima."
+            </blockquote>
+          </Reveal>
         </div>
+
+        {/* Immagine */}
+        <FadeIn delay={0.2}>
+          <div style={{ position: 'relative' }}>
+            {/* Offset decorativo */}
+            <div style={{
+              position: 'absolute',
+              top: -16, right: -16,
+              width: '100%', height: '100%',
+              borderRadius: 16,
+              background: '#F5EDD8',
+              zIndex: 0,
+            }} />
+            <img
+              src="/img5.png"
+              alt="Ambiente Caffineria"
+              style={{
+                position: 'relative',
+                zIndex: 1,
+                width: '100%',
+                aspectRatio: '4/5',
+                objectFit: 'cover',
+                borderRadius: 16,
+                display: 'block',
+              }}
+            />
+          </div>
+        </FadeIn>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .chi-siamo-grid {
+            grid-template-columns: 1fr !important;
+            gap: 48px !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }
