@@ -57,7 +57,7 @@ export default function SezioneGiorno() {
           <FadeIn delay={0.1}>
             <div style={{ borderRadius: 16, overflow: 'hidden', height: '100%', minHeight: 360 }}>
               <img
-                src="/img3.png"
+                src="/img3.jpeg"
                 alt="Colazione Caffineria"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
@@ -69,7 +69,7 @@ export default function SezioneGiorno() {
             <FadeIn delay={0.18}>
               <div style={{ borderRadius: 16, overflow: 'hidden', flex: '0 0 auto' }}>
                 <img
-                  src="/img2.png"
+                  src="/img2.jpeg"
                   alt="Caffè Caffineria"
                   style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block' }}
                 />

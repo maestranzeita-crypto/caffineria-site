@@ -38,7 +38,7 @@ export default function Atmosfera() {
           <FadeIn delay={0.1} direction="left">
             <div className="col-span-2 md:col-span-1 row-span-2 rounded-2xl overflow-hidden" style={{ aspectRatio: '3/4' }}>
               <img
-                src="/img5.png"
+                src="/img5.jpeg"
                 alt="Interno Caffineria"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -49,7 +49,7 @@ export default function Atmosfera() {
           <FadeIn delay={0.2}>
             <div className="rounded-2xl overflow-hidden" style={{ aspectRatio: '4/3' }}>
               <img
-                src="/img4.png"
+                src="/img4.jpeg"
                 alt="Spritz Caffineria"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -60,7 +60,7 @@ export default function Atmosfera() {
           <FadeIn delay={0.3}>
             <div className="rounded-2xl overflow-hidden" style={{ aspectRatio: '4/3' }}>
               <img
-                src="/img3.png"
+                src="/img3.jpeg"
                 alt="Colazione Caffineria"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />

@@ -185,7 +185,7 @@ export default function SezioneSera() {
           className="sera-img"
         >
           <img
-            src="/img4.png"
+            src="/img4.jpeg"
             alt="Spritz Caffineria"
             style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', display: 'block' }}
           />

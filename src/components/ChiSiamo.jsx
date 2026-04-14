@@ -99,7 +99,7 @@ export default function ChiSiamo() {
               zIndex: 0,
             }} />
             <img
-              src="/img5.png"
+              src="/img5.jpeg"
               alt="Ambiente Caffineria"
               style={{
                 position: 'relative',
