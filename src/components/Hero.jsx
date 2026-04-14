@@ -83,7 +83,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.85 }}
-          style={{ display: 'flex', gap: 12, marginTop: 8, flexWrap: 'wrap', justifyContent: 'center' }}
+          style={{ marginTop: 8, display: 'flex', justifyContent: 'center' }}
         >
           <Link
             to="menu"
@@ -102,24 +102,6 @@ export default function Hero() {
             }}
           >
             Scopri il menu
-          </Link>
-          <Link
-            to="sedi"
-            smooth
-            duration={800}
-            offset={-68}
-            style={{
-              cursor: 'pointer',
-              padding: '13px 30px',
-              borderRadius: 999,
-              border: '1px solid rgba(253,248,240,0.4)',
-              color: '#FDF8F0',
-              fontSize: 14,
-              fontWeight: 500,
-              letterSpacing: '0.04em',
-            }}
-          >
-            Le nostre sedi
           </Link>
         </motion.div>
       </div>

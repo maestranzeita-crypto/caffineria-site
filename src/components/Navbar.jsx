@@ -75,25 +75,6 @@ export default function Navbar() {
                 {l.label}
               </Link>
             ))}
-            <Link
-              to="sedi"
-              smooth
-              duration={700}
-              offset={-68}
-              style={{
-                cursor: 'pointer',
-                padding: '10px 22px',
-                borderRadius: 999,
-                fontSize: 13,
-                fontWeight: 600,
-                letterSpacing: '0.05em',
-                background: '#722F37',
-                color: '#FDF8F0',
-                transition: 'opacity 0.2s',
-              }}
-            >
-              Vieni a trovarci
-            </Link>
           </div>
 
           {/* Burger mobile */}
@@ -160,26 +141,6 @@ export default function Navbar() {
                 {l.label}
               </Link>
             ))}
-            <Link
-              to="sedi"
-              smooth
-              duration={700}
-              offset={-68}
-              onClick={() => setMenuOpen(false)}
-              style={{
-                marginTop: 12,
-                textAlign: 'center',
-                padding: '12px 0',
-                borderRadius: 999,
-                background: '#722F37',
-                color: '#FDF8F0',
-                fontSize: 14,
-                fontWeight: 600,
-                cursor: 'pointer',
-              }}
-            >
-              Vieni a trovarci
-            </Link>
           </motion.div>
         )}
       </AnimatePresence>
