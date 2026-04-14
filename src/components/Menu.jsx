@@ -1,8 +1,36 @@
 import { Reveal } from './Motion'
 
+const IconCaffe = ({ color }) => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="4" y="14" width="18" height="12" rx="3" stroke={color} strokeWidth="2" fill="none"/>
+    <path d="M22 17h3a3 3 0 0 1 0 6h-3" stroke={color} strokeWidth="2" fill="none"/>
+    <path d="M9 14V11a2 2 0 0 1 2-2" stroke={color} strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+    <path d="M14 14V10a2 2 0 0 1 2-2" stroke={color} strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+    <line x1="4" y1="28" x2="22" y2="28" stroke={color} strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+)
+
+const IconPranzo = ({ color }) => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 4C10 4 5 9.5 5 16s5 12 11 12 11-5.5 11-12S22 4 16 4z" stroke={color} strokeWidth="2" fill="none"/>
+    <path d="M10 16h12" stroke={color} strokeWidth="1.5" strokeLinecap="round"/>
+    <path d="M13 11l-3 5 3 5" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+    <path d="M19 11l3 5-3 5" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+  </svg>
+)
+
+const IconVino = ({ color }) => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 4h12l-2 10a6 6 0 0 1-8 0L10 4z" stroke={color} strokeWidth="2" fill="none" strokeLinejoin="round"/>
+    <line x1="16" y1="20" x2="16" y2="27" stroke={color} strokeWidth="2" strokeLinecap="round"/>
+    <line x1="11" y1="27" x2="21" y2="27" stroke={color} strokeWidth="2" strokeLinecap="round"/>
+    <path d="M10 10h12" stroke={color} strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+)
+
 const CATEGORIE = [
   {
-    emoji: '☕',
+    Icon: IconCaffe,
     titolo: 'Colazione',
     orario: 'dalle 7:30',
     bg: '#FDF8F0',
@@ -20,7 +48,7 @@ const CATEGORIE = [
     ],
   },
   {
-    emoji: '🥯',
+    Icon: IconPranzo,
     titolo: 'Pranzo',
     orario: 'dalle 12:00',
     bg: '#F5EDD8',
@@ -38,7 +66,7 @@ const CATEGORIE = [
     ],
   },
   {
-    emoji: '🍷',
+    Icon: IconVino,
     titolo: 'Aperitivo & Vini',
     orario: 'dalle 18:00',
     bg: '#2A0E12',
@@ -111,8 +139,8 @@ export default function Menu() {
                   padding: '32px 28px 24px',
                   borderBottom: `1px solid ${cat.borderColor}`,
                 }}>
-                  <span style={{ fontSize: 32, display: 'block', marginBottom: 12 }}>
-                    {cat.emoji}
+                  <span style={{ display: 'block', marginBottom: 12 }}>
+                    <cat.Icon color={cat.accentColor} />
                   </span>
                   <h3 style={{
                     fontFamily: "'Playfair Display', serif",
