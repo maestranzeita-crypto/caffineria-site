@@ -58,14 +58,16 @@ export default function SezioneSera() {
     >
       {/* Video background */}
       <video
-        src="/video1.mov"
         autoPlay muted loop playsInline
         style={{
           position: 'absolute', inset: 0,
           width: '100%', height: '100%',
           objectFit: 'cover',
         }}
-      />
+      >
+        <source src="/video1.mp4" type="video/mp4" />
+        <source src="/video1.mov" type="video/quicktime" />
+      </video>
 
       {/* Overlay scuro */}
       <div style={{
@@ -128,15 +130,15 @@ export default function SezioneSera() {
           <Reveal delay={0.22}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {[
-                { icon: '🍷', text: 'Vini naturali da cantine indipendenti' },
-                { icon: '🔄', text: 'Etichette che cambiano ogni settimana' },
-                { icon: '✨', text: 'Aperitivo del mercoledì' },
-                { icon: '🍺', text: 'Birre artigianali selezionate' },
-              ].map(f => (
-                <div key={f.text} style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                  <span style={{ fontSize: 18 }}>{f.icon}</span>
+                'Vini naturali da cantine indipendenti',
+                'Etichette che cambiano ogni settimana',
+                'Aperitivo del mercoledì',
+                'Birre artigianali selezionate',
+              ].map(text => (
+                <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                  <span style={{ width: 18, height: 1.5, background: '#9B4A54', borderRadius: 2, flexShrink: 0, display: 'inline-block' }} />
                   <span style={{ fontSize: 15, color: 'rgba(253,248,240,0.8)', fontWeight: 400 }}>
-                    {f.text}
+                    {text}
                   </span>
                 </div>
               ))}

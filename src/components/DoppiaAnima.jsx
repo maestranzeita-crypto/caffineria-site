@@ -41,14 +41,14 @@ export default function DoppiaAnima() {
           <FadeIn delay={0.2}>
             <ul className="space-y-3">
               {[
-                { icon: '🥐', text: 'Brioche e cornetti artigianali' },
-                { icon: '☕', text: 'Espresso, cappuccino, filtro' },
-                { icon: '🥯', text: 'Bagels farciti a pranzo' },
-                { icon: '🥗', text: 'Piatti caldi del giorno' },
-              ].map(item => (
-                <li key={item.text} className="flex items-center gap-3 text-sm font-medium" style={{ color: '#3C2415' }}>
-                  <span className="text-lg">{item.icon}</span>
-                  {item.text}
+                'Brioche e cornetti artigianali',
+                'Espresso, cappuccino, filtro',
+                'Bagels farciti a pranzo',
+                'Piatti caldi del giorno',
+              ].map(text => (
+                <li key={text} className="flex items-center gap-3 text-sm font-medium" style={{ color: '#3C2415' }}>
+                  <span style={{ width: 16, height: 1.5, background: '#8B6914', borderRadius: 2, flexShrink: 0, display: 'inline-block' }} />
+                  {text}
                 </li>
               ))}
             </ul>
@@ -82,14 +82,14 @@ export default function DoppiaAnima() {
           <FadeIn delay={0.3}>
             <ul className="space-y-3">
               {[
-                { icon: '🍷', text: 'Vini naturali da cantine indipendenti' },
-                { icon: '🔄', text: 'Etichette che cambiano ogni settimana' },
-                { icon: '🍾', text: 'Aperitivo del mercoledì' },
-                { icon: '🍺', text: 'Birre artigianali selezionate' },
-              ].map(item => (
-                <li key={item.text} className="flex items-center gap-3 text-sm font-medium" style={{ color: '#FDF8F0', opacity: 0.85 }}>
-                  <span className="text-lg">{item.icon}</span>
-                  {item.text}
+                'Vini naturali da cantine indipendenti',
+                'Etichette che cambiano ogni settimana',
+                'Aperitivo del mercoledì',
+                'Birre artigianali selezionate',
+              ].map(text => (
+                <li key={text} className="flex items-center gap-3 text-sm font-medium" style={{ color: '#FDF8F0', opacity: 0.85 }}>
+                  <span style={{ width: 16, height: 1.5, background: '#9B4A54', borderRadius: 2, flexShrink: 0, display: 'inline-block' }} />
+                  {text}
                 </li>
               ))}
             </ul>

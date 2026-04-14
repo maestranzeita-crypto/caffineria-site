@@ -15,17 +15,6 @@ const SEDI = [
     ],
     map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.8!2d9.233!3d45.481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zVmlhIFByaXZhdGEgUHJhbmRpbmEgMQ!5e0!3m2!1sit!2sit!4v1700000000000',
   },
-  {
-    nome: 'NoLo',
-    indirizzo: 'Piazza Morbegno 2',
-    citta: 'Milano',
-    telefono: null,
-    orari: [
-      { g: 'Dom – Gio', o: '8:00 – 23:00' },
-      { g: 'Ven – Sab', o: '8:00 – 01:00' },
-    ],
-    map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.5!2d9.212!3d45.495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zUGlhenphIE1vcmJlZ25vIDI!5e0!3m2!1sit!2sit!4v1700000000001',
-  },
 ]
 
 function MapIcon() {
@@ -81,7 +70,7 @@ export default function Sedi() {
               fontSize: 15, color: 'rgba(60,36,21,0.6)',
               maxWidth: 380, margin: '0 auto', lineHeight: 1.7,
             }}>
-              Due indirizzi milanesi, stessa anima.
+              Vieni a trovarci.
             </p>
           </Reveal>
         </div>
@@ -89,8 +78,9 @@ export default function Sedi() {
         {/* Cards */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
+          gridTemplateColumns: 'minmax(0, 560px)',
           gap: 24,
+          justifyContent: 'center',
         }} className="sedi-grid">
           {SEDI.map((sede, i) => (
             <Reveal key={sede.nome} delay={i * 0.12}>

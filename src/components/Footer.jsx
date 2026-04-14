@@ -30,13 +30,6 @@ export default function Footer() {
         alignItems: 'center',
         gap: 32,
       }}>
-        {/* Logo */}
-        <img
-          src="/logo.png"
-          alt="Caffineria"
-          style={{ maxHeight: 40, opacity: 0.85 }}
-        />
-
         {/* Links */}
         <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', justifyContent: 'center' }}>
           <a
