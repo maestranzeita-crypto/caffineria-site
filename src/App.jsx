@@ -18,10 +18,10 @@ export default function App() {
     <div style={{ width: '100%', overflowX: 'hidden' }}>
       <Navbar />
 
-      {/* CHIARO: hero → eventi → chi siamo → giorno */}
+      {/* CHIARO: hero → chi siamo → eventi → giorno */}
       <Hero />
-      <EventiSettimana />
       <ChiSiamo />
+      <EventiSettimana />
       <SezioneGiorno />
 
       {/* SCURO: sera/vino con video */}
