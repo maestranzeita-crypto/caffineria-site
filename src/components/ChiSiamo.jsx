@@ -86,33 +86,6 @@ export default function ChiSiamo() {
           </Reveal>
         </div>
 
-        {/* Immagine */}
-        <FadeIn delay={0.2}>
-          <div style={{ position: 'relative' }}>
-            {/* Offset decorativo */}
-            <div style={{
-              position: 'absolute',
-              top: -16, right: -16,
-              width: '100%', height: '100%',
-              borderRadius: 16,
-              background: '#F5EDD8',
-              zIndex: 0,
-            }} />
-            <img
-              src="/img5.jpeg"
-              alt="Ambiente Caffineria"
-              style={{
-                position: 'relative',
-                zIndex: 1,
-                width: '100%',
-                aspectRatio: '4/5',
-                objectFit: 'cover',
-                borderRadius: 16,
-                display: 'block',
-              }}
-            />
-          </div>
-        </FadeIn>
       </div>
 
       <style>{`

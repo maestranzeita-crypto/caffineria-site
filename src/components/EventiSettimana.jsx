@@ -8,13 +8,6 @@ const eventi = [
     prezzo: '€ 8',
     accent: '#C2773A',
     bg: '#FDF3E7',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="16" cy="16" r="14" stroke="#C2773A" strokeWidth="1.8"/>
-        <path d="M10 22 L16 8 L22 22" stroke="#C2773A" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M12 18 H20" stroke="#C2773A" strokeWidth="1.6" strokeLinecap="round"/>
-      </svg>
-    ),
   },
   {
     giorno: 'Giovedì',
@@ -23,13 +16,6 @@ const eventi = [
     prezzo: '€ 7',
     accent: '#722F37',
     bg: '#FDF8F0',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="8" y="10" width="10" height="16" rx="2" stroke="#722F37" strokeWidth="1.8"/>
-        <path d="M18 14 H22 Q24 14 24 17 Q24 20 22 20 H18" stroke="#722F37" strokeWidth="1.8" strokeLinecap="round"/>
-        <path d="M10 10 Q10 7 13 7 Q16 7 16 10" stroke="#722F37" strokeWidth="1.6" strokeLinecap="round"/>
-      </svg>
-    ),
   },
 ]
 
@@ -38,11 +24,21 @@ export default function EventiSettimana() {
     <section
       id="eventi"
       style={{
-        background: '#F5EDD8',
+        backgroundImage: 'url(/img5.jpeg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
         padding: '100px 32px',
+        position: 'relative',
       }}
     >
-      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+      {/* overlay scuro per leggibilità */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'rgba(30, 15, 5, 0.62)',
+        zIndex: 0,
+      }} />
+      <div style={{ maxWidth: 1100, margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
@@ -95,9 +91,8 @@ export default function EventiSettimana() {
                 boxShadow: '0 2px 24px rgba(60,36,21,0.07)',
                 border: '1px solid rgba(60,36,21,0.07)',
               }}>
-                {/* Icona + giorno */}
+                {/* Giorno */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                  {e.icon}
                   <span style={{
                     fontSize: 12,
                     fontWeight: 700,
