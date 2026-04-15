@@ -48,7 +48,7 @@ export default function EventiSettimana() {
               fontWeight: 600,
               letterSpacing: '0.3em',
               textTransform: 'uppercase',
-              color: '#722F37',
+              color: '#F5C97A',
               marginBottom: 16,
             }}>
               Ogni settimana
@@ -60,7 +60,7 @@ export default function EventiSettimana() {
               fontFamily: "'Playfair Display', serif",
               fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
               fontWeight: 600,
-              color: '#3C2415',
+              color: '#FFFFFF',
               lineHeight: 1.25,
               margin: 0,
             }}>
