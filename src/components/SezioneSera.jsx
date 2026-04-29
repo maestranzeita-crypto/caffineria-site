@@ -72,12 +72,12 @@ export default function SezioneSera() {
         </div>
 
         {/* Testo */}
-        <div style={{ position: 'relative', zIndex: 2, padding: '80px 48px', width: '100%' }}>
+        <div style={{ position: 'relative', zIndex: 2, padding: '80px 48px 80px 80px', width: '100%' }}>
           <Reveal delay={0}>
             <p style={{
               fontSize: 11, fontWeight: 600,
               letterSpacing: '0.3em', textTransform: 'uppercase',
-              color: '#9B4A54', marginBottom: 20,
+              color: '#ffffff', marginBottom: 20,
             }}>
               Di sera
             </p>
@@ -86,18 +86,18 @@ export default function SezioneSera() {
             <h2 style={{
               fontFamily: "'Playfair Display', serif",
               fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
-              color: '#FDF8F0',
+              color: '#ffffff',
               lineHeight: 1.25,
               marginBottom: 28,
             }}>
               Il rituale<br />
-              <em style={{ color: '#C4757E' }}>della sera</em>
+              <em style={{ color: '#ffffff' }}>della sera</em>
             </h2>
           </Reveal>
           <Reveal delay={0.16}>
             <p style={{
               fontSize: 16, lineHeight: 1.8,
-              color: 'rgba(253,248,240,0.65)',
+              color: '#ffffff',
               marginBottom: 36,
             }}>
               Vini naturali da cantine indipendenti. Etichette che cambiano ogni settimana. L'aperitivo del mercoledì. Una carta pensata con cura, per chi vuole bere bene.
@@ -114,7 +114,7 @@ export default function SezioneSera() {
               ].map(text => (
                 <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
                   <span style={{ width: 18, height: 1.5, background: '#9B4A54', borderRadius: 2, flexShrink: 0, display: 'inline-block' }} />
-                  <span style={{ fontSize: 15, color: 'rgba(253,248,240,0.8)', fontWeight: 400 }}>
+                  <span style={{ fontSize: 15, color: '#ffffff', fontWeight: 400 }}>
                     {text}
                   </span>
                 </div>
@@ -138,7 +138,7 @@ export default function SezioneSera() {
                   <p style={{
                     fontFamily: "'Playfair Display', serif",
                     fontSize: 28, fontWeight: 700,
-                    color: '#FDF8F0', marginBottom: 4,
+                    color: '#ffffff', marginBottom: 4,
                   }}>{s.val}</p>
                   <p style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9B4A54' }}>
                     {s.label}
