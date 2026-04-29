@@ -5,7 +5,7 @@ export default function ChiSiamo() {
     <section
       id="chi-siamo"
       style={{
-        backgroundImage: 'url(/sfondopiante.png)',
+        backgroundImage: 'linear-gradient(rgba(253,248,240,0.72), rgba(253,248,240,0.72)), url(/sfondopiante.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
