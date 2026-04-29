@@ -82,57 +82,56 @@ export default function SezioneSera() {
               Di sera
             </p>
           </Reveal>
+
           <Reveal delay={0.08}>
             <h2 style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
+              fontSize: 'clamp(2.4rem, 4vw, 3.4rem)',
               color: '#ffffff',
-              lineHeight: 1.25,
-              marginBottom: 28,
+              lineHeight: 1.15,
+              marginBottom: 16,
+              letterSpacing: '-0.01em',
             }}>
-              Il rituale<br />
-              <em style={{ color: '#ffffff' }}>della sera</em>
+              Vale Doppio
             </h2>
           </Reveal>
+
           <Reveal delay={0.16}>
             <p style={{
-              fontSize: 16, lineHeight: 1.8,
-              color: '#ffffff',
-              marginBottom: 36,
+              fontSize: 11, fontWeight: 600,
+              letterSpacing: '0.28em', textTransform: 'uppercase',
+              color: '#C4757E', marginBottom: 32,
             }}>
-              Vini naturali da cantine indipendenti. Etichette che cambiano ogni settimana. L'aperitivo del mercoledì. Una carta pensata con cura, per chi vuole bere bene.
+              Ogni mercoledì sera
             </p>
           </Reveal>
 
-          <Reveal delay={0.22}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              {[
-                'Vini naturali da cantine indipendenti',
-                'Etichette che cambiano ogni settimana',
-                'Aperitivo del mercoledì',
-                'Birre artigianali selezionate',
-              ].map(text => (
-                <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                  <span style={{ width: 18, height: 1.5, background: '#9B4A54', borderRadius: 2, flexShrink: 0, display: 'inline-block' }} />
-                  <span style={{ fontSize: 15, color: '#ffffff', fontWeight: 400 }}>
-                    {text}
-                  </span>
-                </div>
-              ))}
-            </div>
+          <Reveal delay={0.24}>
+            <p style={{
+              fontSize: 17, lineHeight: 1.85,
+              color: 'rgba(253,248,240,0.78)',
+              maxWidth: 420,
+            }}>
+              Perché una volta sola non basta. Ogni mercoledì ti aspettiamo con la nostra offerta
+              speciale:{' '}
+              <span style={{ color: '#C4757E', fontWeight: 600 }}>
+                due Aperol Spritz al prezzo di €8
+              </span>
+              . Porta qualcuno con cui brindare — il mercoledì è fatto per condividere.
+            </p>
           </Reveal>
 
-          <Reveal delay={0.3}>
+          <Reveal delay={0.34}>
             <div style={{
               display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 24, marginTop: 48,
+              gap: 24, marginTop: 56,
               paddingTop: 40,
               borderTop: '1px solid rgba(253,248,240,0.1)',
             }}>
               {[
-                { val: '€3', label: 'calice sfuso' },
-                { val: 'Mer', label: 'aperitivo' },
-                { val: '40+', label: 'etichette' },
+                { val: '2', label: 'Aperol Spritz' },
+                { val: '€8', label: 'offerta serale' },
+                { val: 'Mer', label: 'ogni settimana' },
               ].map(s => (
                 <div key={s.label} style={{ textAlign: 'center' }}>
                   <p style={{

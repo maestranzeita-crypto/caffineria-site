@@ -1,3 +1,5 @@
+import { Reveal } from './Motion'
+
 function IgIcon() {
   return (
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -18,10 +20,7 @@ function PhoneIcon() {
 
 export default function Footer() {
   return (
-    <footer style={{
-      background: '#1A0808',
-      padding: '56px 32px',
-    }}>
+    <footer style={{ background: '#1A0808', padding: '56px 32px' }}>
       <div style={{
         maxWidth: 1100,
         margin: '0 auto',
@@ -30,52 +29,55 @@ export default function Footer() {
         alignItems: 'center',
         gap: 32,
       }}>
-        {/* Links */}
-        <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', justifyContent: 'center' }}>
-          <a
-            href="https://instagram.com/caffineria"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'flex', alignItems: 'center', gap: 8,
-              fontSize: 14, fontWeight: 500,
-              color: 'rgba(253,248,240,0.65)',
-              textDecoration: 'none',
-              transition: 'color 0.2s',
-            }}
-          >
-            <IgIcon />
-            @caffineria
-          </a>
-          <a
-            href="tel:0249420043"
-            style={{
-              display: 'flex', alignItems: 'center', gap: 8,
-              fontSize: 14,
-              color: 'rgba(253,248,240,0.45)',
-              textDecoration: 'none',
-            }}
-          >
-            <PhoneIcon />
-            02 4942 0043
-          </a>
-        </div>
+        <Reveal delay={0}>
+          <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', justifyContent: 'center' }}>
+            <a
+              href="https://instagram.com/caffineria"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex', alignItems: 'center', gap: 8,
+                fontSize: 14, fontWeight: 500,
+                color: 'rgba(253,248,240,0.65)',
+                textDecoration: 'none',
+                transition: 'color 0.2s',
+              }}
+            >
+              <IgIcon />
+              @caffineria
+            </a>
+            <a
+              href="tel:0249420043"
+              style={{
+                display: 'flex', alignItems: 'center', gap: 8,
+                fontSize: 14,
+                color: 'rgba(253,248,240,0.45)',
+                textDecoration: 'none',
+              }}
+            >
+              <PhoneIcon />
+              02 4942 0043
+            </a>
+          </div>
+        </Reveal>
 
-        {/* Firma */}
-        <p style={{
-          fontFamily: "'Playfair Display', serif",
-          fontStyle: 'italic',
-          fontSize: 14,
-          color: 'rgba(253,248,240,0.25)',
-          letterSpacing: '0.05em',
-        }}>
-          caffè &amp; vino · Milano
-        </p>
+        <Reveal delay={0.1}>
+          <p style={{
+            fontFamily: "'Playfair Display', serif",
+            fontStyle: 'italic',
+            fontSize: 14,
+            color: 'rgba(253,248,240,0.25)',
+            letterSpacing: '0.05em',
+          }}>
+            caffè &amp; vino · Milano
+          </p>
+        </Reveal>
 
-        {/* Copyright */}
-        <p style={{ fontSize: 11, color: 'rgba(253,248,240,0.15)', letterSpacing: '0.05em' }}>
-          © {new Date().getFullYear()} Caffineria. Tutti i diritti riservati.
-        </p>
+        <Reveal delay={0.18}>
+          <p style={{ fontSize: 11, color: 'rgba(253,248,240,0.15)', letterSpacing: '0.05em' }}>
+            © {new Date().getFullYear()} Caffineria. Tutti i diritti riservati.
+          </p>
+        </Reveal>
       </div>
     </footer>
   )
