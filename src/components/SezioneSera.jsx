@@ -47,54 +47,32 @@ function Reveal({ children, delay = 0 }) {
 
 export default function SezioneSera() {
   return (
-    <section
-      style={{
+    <section style={{ display: 'flex', minHeight: '90vh' }} className="sera-section">
+
+      {/* Pannello sinistro — testo con foto2a.png */}
+      <div style={{
+        flex: 1,
         position: 'relative',
         overflow: 'hidden',
-        minHeight: '90vh',
         display: 'flex',
         alignItems: 'center',
-      }}
-    >
-      {/* Video background */}
-      <video
-        autoPlay muted loop playsInline
-        style={{
+        backgroundImage: 'url(/foto2a.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}>
+        {/* Overlay scuro per leggibilità */}
+        <div style={{
           position: 'absolute', inset: 0,
-          width: '100%', height: '100%',
-          objectFit: 'cover',
-        }}
-      >
-        <source src="/video1.mp4" type="video/mp4" />
-        <source src="/video1.mov" type="video/quicktime" />
-      </video>
+          background: 'linear-gradient(135deg, rgba(20,5,8,0.82) 0%, rgba(60,15,20,0.72) 100%)',
+        }} />
 
-      {/* Overlay scuro */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        background: 'linear-gradient(135deg, rgba(20,5,8,0.82) 0%, rgba(60,15,20,0.70) 60%, rgba(20,5,8,0.88) 100%)',
-      }} />
+        {/* Bollicine */}
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+          {BOLLICINE.map((b, i) => <Bollicina key={i} {...b} />)}
+        </div>
 
-      {/* Bollicine */}
-      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
-        {BOLLICINE.map((b, i) => <Bollicina key={i} {...b} />)}
-      </div>
-
-      {/* Content */}
-      <div style={{
-        position: 'relative',
-        zIndex: 2,
-        maxWidth: 1100,
-        margin: '0 auto',
-        padding: '100px 32px',
-        width: '100%',
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: 64,
-        alignItems: 'center',
-      }} className="sera-grid">
         {/* Testo */}
-        <div>
+        <div style={{ position: 'relative', zIndex: 2, padding: '80px 48px', width: '100%' }}>
           <Reveal delay={0}>
             <p style={{
               fontSize: 11, fontWeight: 600,
@@ -126,7 +104,6 @@ export default function SezioneSera() {
             </p>
           </Reveal>
 
-          {/* Features */}
           <Reveal delay={0.22}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {[
@@ -145,7 +122,6 @@ export default function SezioneSera() {
             </div>
           </Reveal>
 
-          {/* Stats */}
           <Reveal delay={0.3}>
             <div style={{
               display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
@@ -172,32 +148,27 @@ export default function SezioneSera() {
             </div>
           </Reveal>
         </div>
+      </div>
 
-        {/* Immagine spritz */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+      {/* Pannello destro — video invariato */}
+      <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }} className="sera-video-panel">
+        <video
+          autoPlay muted loop playsInline
           style={{
-            borderRadius: 20,
-            overflow: 'hidden',
-            border: '1px solid rgba(155,74,84,0.2)',
+            position: 'absolute', inset: 0,
+            width: '100%', height: '100%',
+            objectFit: 'cover',
           }}
-          className="sera-img"
         >
-          <img
-            src="/img4.jpeg"
-            alt="Spritz Caffineria"
-            style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', display: 'block' }}
-          />
-        </motion.div>
+          <source src="/video1.mp4" type="video/mp4" />
+          <source src="/video1.mov" type="video/quicktime" />
+        </video>
       </div>
 
       <style>{`
         @media (max-width: 768px) {
-          .sera-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-          .sera-img { display: none; }
+          .sera-section { flex-direction: column; }
+          .sera-video-panel { min-height: 300px; }
         }
       `}</style>
     </section>
