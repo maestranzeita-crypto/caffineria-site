@@ -21,11 +21,11 @@ export default function App() {
       {/* CHIARO: hero → chi siamo → eventi → giorno */}
       <Hero />
       <ChiSiamo />
-      <EventiSettimana />
       <SezioneGiorno />
 
       {/* SCURO: sera/vino con video */}
       <SezioneSera />
+      <EventiSettimana />
 
       {/* RITORNO AL CHIARO: menu → sedi */}
       <Menu />
