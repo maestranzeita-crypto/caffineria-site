@@ -60,10 +60,10 @@ export default function SezioneSera() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}>
-        {/* Overlay scuro per leggibilità */}
+        {/* Overlay scuro — si intensifica verso destra per fondersi col video */}
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(135deg, rgba(20,5,8,0.82) 0%, rgba(60,15,20,0.72) 100%)',
+          background: 'linear-gradient(to right, rgba(20,5,8,0.75) 0%, rgba(20,5,8,0.75) 55%, rgba(20,5,8,0.97) 100%)',
         }} />
 
         {/* Bollicine */}
@@ -152,6 +152,11 @@ export default function SezioneSera() {
 
       {/* Pannello destro — video invariato */}
       <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }} className="sera-video-panel">
+        {/* Sfumatura sul bordo sinistro per fondersi col pannello testo */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none',
+          background: 'linear-gradient(to right, rgba(20,5,8,0.97) 0%, transparent 40%)',
+        }} />
         <video
           autoPlay muted loop playsInline
           style={{
