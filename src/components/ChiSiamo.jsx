@@ -5,7 +5,10 @@ export default function ChiSiamo() {
     <section
       id="chi-siamo"
       style={{
-        background: '#FDF8F0',
+        backgroundImage: 'url(/sfondopiante.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         padding: '120px 32px',
       }}
     >
