@@ -152,6 +152,12 @@ export default function SezioneSera() {
 
       {/* Pannello destro — video invariato */}
       <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }} className="sera-video-panel">
+        {/* Sfumatura sul bordo sinistro verso il pannello testo */}
+        <div style={{
+          position: 'absolute', inset: 0, left: 0,
+          width: 160, zIndex: 2, pointerEvents: 'none',
+          background: 'linear-gradient(to right, rgba(20,5,8,0.9), transparent)',
+        }} />
         <video
           autoPlay muted loop playsInline
           style={{
