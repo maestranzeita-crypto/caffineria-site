@@ -46,13 +46,7 @@ export default function Sedi() {
   return (
     <section
       id="sedi"
-      style={{
-        backgroundImage: 'linear-gradient(rgba(253,248,240,0.75), rgba(253,248,240,0.75)), url(/foto2a.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        padding: '120px 32px',
-      }}
+      style={{ background: '#FDF8F0', padding: '120px 32px' }}
     >
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         {/* Header */}
