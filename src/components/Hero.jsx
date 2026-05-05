@@ -5,99 +5,135 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col lg:flex-row"
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: '100dvh',
+        minHeight: 600,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+      }}
     >
-      {/* LEFT — content */}
-      <div className="flex-1 flex flex-col items-center justify-center px-8 py-24 text-center relative">
-        {/* Soft radial glow */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[500px] h-[500px] rounded-full bg-[#FDF8F0]/50 blur-3xl" />
-        </div>
+      {/* Background image */}
+      <img
+        src="/img1.png"
+        alt=""
+        style={{
+          position: 'absolute', inset: 0,
+          width: '100%', height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+        }}
+      />
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+      {/* Overlay gradiente */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'linear-gradient(to bottom, rgba(20,8,5,0.50) 0%, rgba(20,8,5,0.62) 55%, rgba(20,8,5,0.85) 100%)',
+      }} />
+
+      {/* Content */}
+      <div style={{
+        position: 'relative',
+        zIndex: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        textAlign: 'center',
+        padding: '0 24px',
+        gap: 20,
+      }}>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: 'easeOut' }}
-          className="relative flex flex-col items-center gap-8"
+          transition={{ duration: 0.9, delay: 0.4 }}
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: 'clamp(1.6rem, 4vw, 2.4rem)',
+            fontStyle: 'italic',
+            color: '#FDF8F0',
+            letterSpacing: '0.01em',
+            lineHeight: 1.3,
+            margin: 0,
+          }}
         >
-          <img
-            src="/logo.png"
-            alt="Caffineria"
-            className="w-[200px] md:w-[260px] lg:w-[280px] max-w-full drop-shadow-sm"
-          />
+          Caffetteria di giorno, vineria di sera
+        </motion.p>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="text-xl md:text-2xl font-display italic text-[#3C2415]/80 tracking-wide"
-          >
-            Caffetteria di giorno, vineria di sera
-          </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.65 }}
+          style={{
+            fontSize: 13,
+            fontWeight: 500,
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            color: 'rgba(253,248,240,0.6)',
+            margin: 0,
+          }}
+        >
+          Milano · Via Prandina
+        </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className="flex flex-col sm:flex-row gap-4 mt-2"
-          >
-            <Link
-              to="doppia-anima"
-              smooth
-              duration={700}
-              offset={-72}
-              className="px-8 py-3 rounded-full bg-[#722F37] text-[#FDF8F0] font-body font-medium
-                         text-[15px] tracking-wide cursor-pointer hover:bg-[#5a2229] transition-all
-                         duration-300 shadow-md hover:shadow-lg"
-            >
-              Scopri il menu
-            </Link>
-            <Link
-              to="sedi"
-              smooth
-              duration={700}
-              offset={-72}
-              className="px-8 py-3 rounded-full border-2 border-[#3C2415]/40 text-[#3C2415]
-                         font-body font-medium text-[15px] tracking-wide cursor-pointer
-                         hover:border-[#3C2415] transition-all duration-300"
-            >
-              Le nostre sedi
-            </Link>
-          </motion.div>
-        </motion.div>
-
-        {/* Scroll indicator */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.85 }}
+          style={{ marginTop: 8, display: 'flex', justifyContent: 'center' }}
         >
-          <span className="text-[12px] font-body text-[#3C2415]/50 tracking-widest uppercase">Scorri</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
-            className="w-[1px] h-10 bg-gradient-to-b from-[#3C2415]/40 to-transparent"
-          />
+          <Link
+            to="menu"
+            smooth
+            duration={800}
+            offset={-68}
+            style={{
+              cursor: 'pointer',
+              padding: '13px 30px',
+              borderRadius: 999,
+              background: '#722F37',
+              color: '#FDF8F0',
+              fontSize: 14,
+              fontWeight: 600,
+              letterSpacing: '0.04em',
+            }}
+          >
+            Scopri il menu
+          </Link>
         </motion.div>
       </div>
 
-      {/* RIGHT — photo (solo desktop) */}
+      {/* Freccia scroll */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, delay: 0.3 }}
-        className="hidden lg:block lg:w-[52%] relative overflow-hidden"
+        transition={{ delay: 1.4, duration: 0.8 }}
+        style={{
+          position: 'absolute',
+          bottom: 36,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 2,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 8,
+          cursor: 'pointer',
+        }}
       >
-        <img
-          src="https://images.pexels.com/photos/19561080/pexels-photo-19561080.jpeg?auto=compress&cs=tinysrgb&w=1400"
-          alt="Caffineria interno"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        {/* Overlay sfumato a sinistra per integrarlo col contenuto */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FDF8F0]/80 via-[#FDF8F0]/10 to-transparent" />
-        {/* Overlay caldo in basso */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#3C2415]/30 to-transparent" />
+        <span style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(253,248,240,0.45)' }}>
+          Scorri
+        </span>
+        <motion.svg
+          width="16" height="24" viewBox="0 0 16 24" fill="none"
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <path d="M8 0v20M1 13l7 7 7-7" stroke="rgba(253,248,240,0.45)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </motion.svg>
       </motion.div>
     </section>
   )

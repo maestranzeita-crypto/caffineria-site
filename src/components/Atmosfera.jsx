@@ -1,113 +1,82 @@
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
-const photos = [
-  {
-    src: 'https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=800',
-    alt: 'Espresso al banco',
-    caption: 'Il rito del mattino',
-  },
-  {
-    src: 'https://images.pexels.com/photos/1995010/pexels-photo-1995010.jpeg?auto=compress&cs=tinysrgb&w=800',
-    alt: 'Il bancone',
-    caption: 'Il nostro spazio',
-  },
-  {
-    src: 'https://images.pexels.com/photos/761854/pexels-photo-761854.jpeg?auto=compress&cs=tinysrgb&w=800',
-    alt: 'Aperitivo serale',
-    caption: 'La sera con gli amici',
-  },
-]
+function FadeIn({ children, delay = 0, direction = 'up' }) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-60px' })
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: direction === 'up' ? 30 : 0, x: direction === 'left' ? -30 : direction === 'right' ? 30 : 0 }}
+      animate={inView ? { opacity: 1, y: 0, x: 0 } : {}}
+      transition={{ duration: 0.8, delay, ease: 'easeOut' }}
+    >
+      {children}
+    </motion.div>
+  )
+}
 
 export default function Atmosfera() {
   return (
-    <section id="atmosfera" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-
-        {/* Header */}
-        <div className="text-center mb-14">
-          <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="inline-block text-[13px] font-body font-medium tracking-[0.2em] uppercase
-                       text-[#722F37] mb-4"
-          >
+    <section
+      className="py-24 md:py-32"
+      style={{ background: '#F5EDD8' }}
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        <FadeIn>
+          <p className="text-xs font-semibold tracking-[0.3em] uppercase mb-3 text-center" style={{ color: '#722F37' }}>
             L'atmosfera
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-display font-medium text-[#3C2415] leading-tight"
-          >
-            Un posto dove <em>stare bene</em>
-          </motion.h2>
-        </div>
+          </p>
+          <h2 className="font-display text-4xl md:text-5xl text-center mb-16" style={{ color: '#3C2415' }}>
+            Un posto che si sente
+          </h2>
+        </FadeIn>
 
         {/* Grid asimmetrica */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5">
-          {/* Foto grande a sinistra */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.8 }}
-            className="md:col-span-7 relative overflow-hidden rounded-3xl group"
-          >
-            <div className="aspect-[4/3] md:aspect-auto md:h-[480px]">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          {/* Grande a sinistra */}
+          <FadeIn delay={0.1} direction="left">
+            <div className="col-span-2 md:col-span-1 row-span-2 rounded-2xl overflow-hidden" style={{ aspectRatio: '3/4' }}>
               <img
-                src={photos[1].src}
-                alt={photos[1].alt}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                src="/img5.jpeg"
+                alt="Interno Caffineria"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1A0808]/60 via-transparent to-transparent" />
-              <motion.span
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="absolute bottom-5 left-6 text-[#FDF8F0]/85 font-display italic text-[18px]"
-              >
-                {photos[1].caption}
-              </motion.span>
             </div>
-          </motion.div>
+          </FadeIn>
 
-          {/* Colonna destra: due foto */}
-          <div className="md:col-span-5 flex flex-col gap-4 md:gap-5">
-            {[photos[0], photos[2]].map((photo, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.8, delay: 0.15 + i * 0.15 }}
-                className="relative overflow-hidden rounded-3xl group flex-1"
-              >
-                <div className="aspect-[16/9] md:aspect-auto md:h-[228px]">
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A0808]/55 via-transparent to-transparent" />
-                  <motion.span
-                    initial={{ opacity: 0, y: 8 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.3 + i * 0.12 }}
-                    className="absolute bottom-4 left-5 text-[#FDF8F0]/85 font-display italic text-[16px]"
-                  >
-                    {photo.caption}
-                  </motion.span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          {/* Destra top: spritz */}
+          <FadeIn delay={0.2}>
+            <div className="rounded-2xl overflow-hidden" style={{ aspectRatio: '4/3' }}>
+              <img
+                src="/img4.jpeg"
+                alt="Spritz Caffineria"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+          </FadeIn>
+
+          {/* Destra bottom: colazione */}
+          <FadeIn delay={0.3}>
+            <div className="rounded-2xl overflow-hidden" style={{ aspectRatio: '4/3' }}>
+              <img
+                src="/img3.jpeg"
+                alt="Colazione Caffineria"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+          </FadeIn>
         </div>
 
+        {/* Quote centrale */}
+        <FadeIn delay={0.2}>
+          <p
+            className="font-display text-xl md:text-2xl italic text-center mt-12 max-w-2xl mx-auto"
+            style={{ color: '#3C2415', opacity: 0.7 }}
+          >
+            "Ogni angolo racconta qualcosa — la luce della mattina, il profumo del caffè, il tintinnio dei calici."
+          </p>
+        </FadeIn>
       </div>
     </section>
   )

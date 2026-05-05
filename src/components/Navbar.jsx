@@ -1,126 +1,137 @@
 import { useState, useEffect } from 'react'
-import { Link as ScrollLink } from 'react-scroll'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-scroll'
+import { Link as RouterLink } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
 
-const scrollNavLinks = [
+const NAV_LINKS = [
   { to: 'chi-siamo', label: 'Chi siamo' },
-  { to: 'sedi', label: 'Le sedi' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
-  const { pathname } = useLocation()
-  const isMenu = pathname === '/menu'
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-[#FDF8F0]/90 backdrop-blur-md shadow-sm'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-6 h-[72px] flex items-center justify-between">
-        {isMenu ? (
-          <Link to="/" className="cursor-pointer">
-            <img src="/logo.png" alt="Caffineria" className="h-10 w-auto" />
+    <>
+      <nav
+        style={{
+          position: 'fixed',
+          top: 0, left: 0, right: 0,
+          zIndex: 100,
+          transition: 'background 0.4s, box-shadow 0.4s',
+          background: scrolled ? 'rgba(253,248,240,0.88)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(14px)' : 'none',
+          boxShadow: scrolled ? '0 1px 0 rgba(60,36,21,0.08)' : 'none',
+        }}
+      >
+        <div style={{
+          maxWidth: 1200,
+          margin: '0 auto',
+          padding: '0 32px',
+          height: 68,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}>
+          {/* Logo */}
+          <Link to="hero" smooth duration={600} style={{ cursor: 'pointer', flexShrink: 0 }}>
+            <img
+              src="/logo.png"
+              alt="Caffineria"
+              style={{
+                maxHeight: 45,
+                display: 'block',
+                opacity: scrolled ? 1 : 0,
+                transition: 'opacity 0.4s',
+              }}
+            />
           </Link>
-        ) : (
-          <ScrollLink to="hero" smooth duration={600} className="cursor-pointer">
-            <img src="/logo.png" alt="Caffineria" className="h-10 w-auto" />
-          </ScrollLink>
+
+          {/* Desktop links */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 36 }} className="hide-mobile">
+            {NAV_LINKS.map(l => (
+              <Link key={l.to} to={l.to} smooth duration={700} offset={-68}
+                style={{ cursor: 'pointer', fontSize: 14, fontWeight: 500, letterSpacing: '0.04em', color: scrolled ? '#3C2415' : '#FDF8F0', transition: 'color 0.4s', textDecoration: 'none' }}>
+                {l.label}
+              </Link>
+            ))}
+            <RouterLink to="/menu"
+              style={{ cursor: 'pointer', fontSize: 14, fontWeight: 500, letterSpacing: '0.04em', color: scrolled ? '#3C2415' : '#FDF8F0', transition: 'color 0.4s', textDecoration: 'none' }}>
+              Menu
+            </RouterLink>
+          </div>
+
+          {/* Burger mobile */}
+          <button
+            className="show-mobile"
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label="Apri menu"
+            style={{
+              background: 'none', border: 'none', cursor: 'pointer',
+              display: 'flex', flexDirection: 'column', gap: 5, padding: 4,
+            }}
+          >
+            {[0, 1, 2].map(i => (
+              <span key={i} style={{
+                display: 'block', height: 1.5, width: 24,
+                background: scrolled ? '#3C2415' : '#FDF8F0',
+                borderRadius: 2,
+                transition: 'background 0.4s',
+              }} />
+            ))}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile drawer */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+            style={{
+              position: 'fixed',
+              top: 68, left: 0, right: 0,
+              zIndex: 99,
+              background: 'rgba(253,248,240,0.97)',
+              backdropFilter: 'blur(16px)',
+              borderBottom: '1px solid rgba(60,36,21,0.08)',
+              padding: '16px 32px 24px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 2,
+            }}
+          >
+            {NAV_LINKS.map(l => (
+              <Link key={l.to} to={l.to} smooth duration={700} offset={-68} onClick={() => setMenuOpen(false)}
+                style={{ cursor: 'pointer', fontSize: 16, fontWeight: 500, color: '#3C2415', padding: '12px 0', borderBottom: '1px solid rgba(60,36,21,0.07)', textDecoration: 'none' }}>
+                {l.label}
+              </Link>
+            ))}
+            <RouterLink to="/menu" onClick={() => setMenuOpen(false)}
+              style={{ cursor: 'pointer', fontSize: 16, fontWeight: 500, color: '#3C2415', padding: '12px 0', borderBottom: '1px solid rgba(60,36,21,0.07)', textDecoration: 'none', display: 'block' }}>
+              Menu
+            </RouterLink>
+          </motion.div>
         )}
+      </AnimatePresence>
 
-        {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-8">
-          {scrollNavLinks.map(({ to, label }) => (
-            <li key={to}>
-              {isMenu ? (
-                <a href={`/#${to}`} className="font-body text-[15px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300 tracking-wide">
-                  {label}
-                </a>
-              ) : (
-                <ScrollLink to={to} smooth duration={600} offset={-72}
-                  className="font-body text-[15px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300 tracking-wide">
-                  {label}
-                </ScrollLink>
-              )}
-            </li>
-          ))}
-          <li>
-            <Link to="/menu"
-              className={`font-body text-[15px] font-medium tracking-wide transition-colors duration-300 hover:text-[#722F37] ${isMenu ? 'text-[#722F37]' : 'text-[#3C2415]'}`}>
-              Menu
-            </Link>
-          </li>
-          <li>
-            {isMenu ? (
-              <a href="/#sedi" className="px-5 py-2 rounded-full border border-[#722F37] text-[#722F37] text-[14px] font-medium hover:bg-[#722F37] hover:text-[#FDF8F0] transition-all duration-300 cursor-pointer">
-                Vieni a trovarci
-              </a>
-            ) : (
-              <ScrollLink to="sedi" smooth duration={600} offset={-72}
-                className="px-5 py-2 rounded-full border border-[#722F37] text-[#722F37] text-[14px] font-medium hover:bg-[#722F37] hover:text-[#FDF8F0] transition-all duration-300 cursor-pointer">
-                Vieni a trovarci
-              </ScrollLink>
-            )}
-          </li>
-        </ul>
-
-        {/* Mobile hamburger */}
-        <button className="md:hidden flex flex-col gap-[5px] p-2" onClick={() => setOpen(!open)} aria-label="Menu">
-          <span className={`block w-6 h-[2px] bg-[#3C2415] transition-all duration-300 ${open ? 'rotate-45 translate-y-[7px]' : ''}`} />
-          <span className={`block w-6 h-[2px] bg-[#3C2415] transition-all duration-300 ${open ? 'opacity-0' : ''}`} />
-          <span className={`block w-6 h-[2px] bg-[#3C2415] transition-all duration-300 ${open ? '-rotate-45 -translate-y-[7px]' : ''}`} />
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      <div className={`md:hidden bg-[#FDF8F0]/95 backdrop-blur-md overflow-hidden transition-all duration-300 ${open ? 'max-h-64' : 'max-h-0'}`}>
-        <ul className="flex flex-col py-4 px-6 gap-4">
-          {scrollNavLinks.map(({ to, label }) => (
-            <li key={to}>
-              {isMenu ? (
-                <a href={`/#${to}`} onClick={() => setOpen(false)}
-                  className="block font-body text-[16px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300">
-                  {label}
-                </a>
-              ) : (
-                <ScrollLink to={to} smooth duration={600} offset={-72} onClick={() => setOpen(false)}
-                  className="block font-body text-[16px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300">
-                  {label}
-                </ScrollLink>
-              )}
-            </li>
-          ))}
-          <li>
-            <Link to="/menu" onClick={() => setOpen(false)}
-              className="block font-body text-[16px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300">
-              Menu
-            </Link>
-          </li>
-          <li>
-            {isMenu ? (
-              <a href="/#sedi" onClick={() => setOpen(false)}
-                className="inline-block mt-1 px-5 py-2 rounded-full border border-[#722F37] text-[#722F37] text-[14px] font-medium cursor-pointer">
-                Vieni a trovarci
-              </a>
-            ) : (
-              <ScrollLink to="sedi" smooth duration={600} offset={-72} onClick={() => setOpen(false)}
-                className="inline-block mt-1 px-5 py-2 rounded-full border border-[#722F37] text-[#722F37] text-[14px] font-medium cursor-pointer">
-                Vieni a trovarci
-              </ScrollLink>
-            )}
-          </li>
-        </ul>
-      </div>
-    </nav>
+      <style>{`
+        .hide-mobile { display: flex; }
+        .show-mobile { display: none; }
+        @media (max-width: 768px) {
+          .hide-mobile { display: none !important; }
+          .show-mobile { display: flex !important; }
+        }
+      `}</style>
+    </>
   )
 }

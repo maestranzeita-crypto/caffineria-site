@@ -1,20 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
 @import "tailwindcss";
-
-@theme {
-  --color-cream: #FDF8F0;
-  --color-coffee: #3C2415;
-  --color-bordeaux: #722F37;
-  --color-caramel: #8B6914;
-  --color-night: #1A0808;
-  --color-dusk: #2C1008;
-  --color-amber: #C4853A;
-
-  --font-display: "Playfair Display", serif;
-  --font-body: "DM Sans", sans-serif;
-}
 
 *, *::before, *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -22,36 +12,23 @@ html {
 }
 
 body {
-  margin: 0;
-  font-family: "DM Sans", sans-serif;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: #FDF8F0;
   color: #3C2415;
-  background: linear-gradient(
-    to bottom,
-    #FDF8F0 0%,
-    #F5ECD8 18%,
-    #E8D4A8 38%,
-    #C4853A 62%,
-    #6B2418 80%,
-    #1A0808 100%
-  );
-  background-size: 100% 100%;
-  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 #root {
   width: 100%;
-  overflow-x: hidden;
+  max-width: 100%;
 }
 
-h1, h2, h3, h4 {
-  font-family: "Playfair Display", serif;
+img, video {
+  max-width: 100%;
 }
 
-p {
-  line-height: 1.75;
-}
-
-/* Smooth scroll target offset for sticky nav */
-section {
-  scroll-margin-top: 72px;
+a {
+  color: inherit;
 }

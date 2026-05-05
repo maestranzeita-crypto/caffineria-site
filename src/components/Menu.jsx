@@ -1,302 +1,208 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { Reveal } from './Motion'
 
-const IconCup = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M6 2c0 0 1 1 1 3s-1 3-1 3" /><path d="M10 2c0 0 1 1 1 3s-1 3-1 3" />
-    <path d="M3 10h13l-1.5 9H4.5L3 10z" /><path d="M16 12h2a2 2 0 0 1 0 4h-2" />
+const IconCaffe = ({ color }) => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="4" y="14" width="18" height="12" rx="3" stroke={color} strokeWidth="2" fill="none"/>
+    <path d="M22 17h3a3 3 0 0 1 0 6h-3" stroke={color} strokeWidth="2" fill="none"/>
+    <path d="M9 14V11a2 2 0 0 1 2-2" stroke={color} strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+    <path d="M14 14V10a2 2 0 0 1 2-2" stroke={color} strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+    <line x1="4" y1="28" x2="22" y2="28" stroke={color} strokeWidth="2" strokeLinecap="round"/>
   </svg>
 )
 
-const IconLeaf = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 5-3 8-3 8s2 0 3 1c-1 4-3 5-8 9z" />
-    <path d="M2 21c3-3 6-6 9-8" />
+const IconPranzo = ({ color }) => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 4C10 4 5 9.5 5 16s5 12 11 12 11-5.5 11-12S22 4 16 4z" stroke={color} strokeWidth="2" fill="none"/>
+    <path d="M10 16h12" stroke={color} strokeWidth="1.5" strokeLinecap="round"/>
+    <path d="M13 11l-3 5 3 5" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+    <path d="M19 11l3 5-3 5" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
   </svg>
 )
 
-const IconCake = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8" />
-    <path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2 1 2 1" />
-    <path d="M2 21h20" /><path d="M7 8v2" /><path d="M12 8v2" /><path d="M17 8v2" />
-    <path d="M7 4h.01" /><path d="M12 4h.01" /><path d="M17 4h.01" />
+const IconVino = ({ color }) => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 4h12l-2 10a6 6 0 0 1-8 0L10 4z" stroke={color} strokeWidth="2" fill="none" strokeLinejoin="round"/>
+    <line x1="16" y1="20" x2="16" y2="27" stroke={color} strokeWidth="2" strokeLinecap="round"/>
+    <line x1="11" y1="27" x2="21" y2="27" stroke={color} strokeWidth="2" strokeLinecap="round"/>
+    <path d="M10 10h12" stroke={color} strokeWidth="1.5" strokeLinecap="round"/>
   </svg>
 )
 
-const IconSun = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="4" />
-    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-  </svg>
-)
-
-const IconPlate = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M3 11l19-9-9 19-2-8-8-2z" />
-  </svg>
-)
-
-const IconCocktail = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M8 22h8" /><path d="M12 11v11" />
-    <path d="M20 2H4l8 9.46L20 2z" />
-  </svg>
-)
-
-const IconWine = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M8 2h8l-2 8a4 4 0 0 1-4 0L8 2z" />
-    <line x1="12" y1="10" x2="12" y2="20" />
-    <line x1="8" y1="20" x2="16" y2="20" />
-  </svg>
-)
-
-const categories = [
+const CATEGORIE = [
   {
-    id: 'caffe',
-    label: 'Caffetteria',
-    icon: <IconCup />,
-    items: [
-      { name: 'Caffè 100% Arabica', price: '1,30 €' },
-      { name: 'Decaffeinato Agust', price: '1,40 €' },
-      { name: 'Americano', price: '1,50 €' },
-      { name: 'Corretto', price: '1,70 €' },
-      { name: 'Macchiatone', price: '1,50 €' },
-      { name: 'Cappuccino', price: '1,80 €' },
-      { name: 'Latte Macchiato', price: '2,20 €' },
-      { name: 'Americano Macchiato', price: '1,70 €' },
-      { name: 'Marocchino', price: '1,60 €', note: 'Deca/Orzo 1,70 €' },
-      { name: 'Orzo / Ginseng', price: '1,50 – 2,00 €', note: 'Piccolo 1,50 € / Grande 2,00 €' },
-      { name: 'Cappuccino Orzo/Ginseng', price: '2,20 €' },
-      { name: 'Latte Bianco', price: '0,50 – 1,50 €', note: 'Piccolo 0,50 € / Medio 1,00 € / Grande 1,50 €' },
-      { name: 'Filtrato', price: '1,70 – 2,10 €', note: 'Medio 1,70 € / Grande 2,10 €' },
-      { name: 'Shakerato Caffè', price: '3,30 €' },
-      { name: 'Shakerato Ginseng', price: '3,50 €' },
-      { name: 'Shakerato con Baileys', price: '4,60 €' },
-      { name: 'Cioccolata', price: '3,00 €', note: 'Con panna 3,50 €' },
-      { name: 'Tè Caldo / Tisane', price: '2,50 €' },
-      { name: 'Tè Matcha', price: '3,50 €' },
-      { name: 'Matcha Cappuccino', price: '2,10 €', note: 'Versione latte 2,40 €' },
-      { name: 'Golden Milk Cappuccino', price: '2,10 €', note: 'Versione latte 2,40 €' },
-      { name: 'Leche e Leche', price: '2,50 €' },
-      { name: 'Caffinero', price: '2,80 €' },
-      { name: 'Aggiunta Ghiaccio', price: '+0,40 €' },
+    Icon: IconCaffe,
+    titolo: 'Colazione',
+    orario: 'dalle 7:30',
+    bg: '#FDF8F0',
+    accentColor: '#8B6914',
+    borderColor: 'rgba(60,36,21,0.08)',
+    textColor: '#3C2415',
+    subColor: 'rgba(60,36,21,0.55)',
+    voci: [
+      { nome: 'Espresso', prezzo: '€1,00' },
+      { nome: 'Cappuccino', prezzo: '€1,50' },
+      { nome: 'Caffè macchiato', prezzo: '€1,10' },
+      { nome: 'Brioche artigianale', prezzo: '€1,00' },
+      { nome: 'Cornetto al burro', prezzo: '€1,20' },
+      { nome: 'Succo fresco', prezzo: '€3,50' },
     ],
   },
   {
-    id: 'healthy',
-    label: 'Healthy',
-    icon: <IconLeaf />,
-    items: [
-      { name: 'Spremuta', price: '4,00 – 5,00 €', note: 'Piccola 4,00 € / Grande 5,00 €' },
-      { name: 'Succo', price: '3,00 €' },
-      { name: 'Yogurt', price: '4,00 €', note: 'Con granola, miele e marmellata' },
-      { name: 'Acqua Menta', price: '1,50 €' },
-      { name: 'Menta Latte', price: '2,50 €' },
-      { name: 'Aggiunta Latte di Soia', price: '+0,20 €' },
-      { name: 'Aggiunta Latte di Avena', price: '+0,30 €' },
-      { name: 'Aggiunta Latte di Mandorla', price: '+0,40 €' },
+    Icon: IconPranzo,
+    titolo: 'Pranzo',
+    orario: 'dalle 12:00',
+    bg: '#F5EDD8',
+    accentColor: '#3C2415',
+    borderColor: 'rgba(60,36,21,0.1)',
+    textColor: '#3C2415',
+    subColor: 'rgba(60,36,21,0.55)',
+    voci: [
+      { nome: 'Bagel classico', prezzo: '€5,40' },
+      { nome: 'Bagel del giorno', prezzo: '€6,00' },
+      { nome: 'Piatto caldo', prezzo: '€7,50' },
+      { nome: 'Insalata stagionale', prezzo: '€6,50' },
+      { nome: 'Zuppa del giorno', prezzo: '€5,00' },
+      { nome: 'Dolce del giorno', prezzo: '€3,50' },
     ],
   },
   {
-    id: 'dolci',
-    label: 'Dolci',
-    icon: <IconCake />,
-    items: [
-      { name: 'Torte Artigianali', price: '3,50 €', note: 'Carrot Cake, Mela/Cannella, Limone' },
-      { name: 'Biscotti Cocco e Limone / Burro', price: '1,80 €' },
-      { name: 'Biscotti Gocce di Cioccolato', price: '2,00 €' },
-      { name: 'Muffin Artigianali', price: '3,50 €', note: 'Cioccolato, Mirtillo, Red Velvet' },
-      { name: 'Muffin Vegani', price: '3,50 €' },
-      { name: 'Pancake', price: '4,00 €', note: 'Aggiunta panna montata +0,50 €' },
-    ],
-  },
-  {
-    id: 'brunch',
-    label: 'Brunch',
-    icon: <IconSun />,
-    badge: 'Sab & Dom 9:30 – 11:30',
-    items: [
-      { name: 'Toast', price: '11,00 €' },
-      { name: 'Bagel Salato', price: '12,00 €' },
-      { name: 'Pancakes', price: '10,50 €' },
-      { name: 'Pane, Burro e Marmellata', price: 'incluso' },
-    ],
-    footer: 'Ogni brunch include: biscotto artigianale al burro + spremuta e caffè filtrato.',
-  },
-  {
-    id: 'pranzo',
-    label: 'Pranzo',
-    icon: <IconPlate />,
-    items: [
-      { name: 'Insalata Vegetariana', price: '7,50 €' },
-      { name: 'Insalata Salmone', price: '8,00 €' },
-      { name: 'Piatto di Bresaola', price: '8,00 €', note: 'Rucola, grana, limone' },
-      { name: 'Piatto Acciughe', price: '8,00 €', note: 'Finocchio, arancia, acciughe' },
-      { name: 'Bagel Salmone', price: '7,00 €' },
-      { name: 'Bagel Mousse Tonno', price: '6,50 €' },
-      { name: 'Bagel Crudo', price: '7,00 €', note: 'Crudo, Brie, Miele' },
-      { name: 'Bagel Pesto', price: '6,50 €' },
-      { name: 'Bagel Bresaola', price: '7,00 €' },
-      { name: 'Maxi Toast', price: '4,50 €' },
-      { name: 'Panino', price: 'da 6,50 €' },
-      { name: 'Focaccia Farcita', price: 'da 4,50 €' },
-      { name: 'Piadina', price: '6,50 €' },
-    ],
-  },
-  {
-    id: 'aperitivo',
-    label: 'Aperitivo',
-    icon: <IconCocktail />,
-    items: [
-      { name: 'Spritz', price: '6,00 €', note: 'Aperol, Campari, Vermouth, Cynar, Select — +4,00 € per il Tagliere' },
-      { name: 'Gin Tonic / Vodka Tonic', price: 'da 7,00 €' },
-      { name: 'Negroni / Sbagliato', price: '7,00 €' },
-      { name: 'Mojito', price: '10,00 €' },
-      { name: 'Vermouth Cocchi', price: '4,50 €' },
-      { name: 'Amari Classici', price: '4,00 €' },
-      { name: 'Amari Artigianali', price: '5,00 €', note: 'Jefferson, Taneda, Nonino, Venti' },
-      { name: 'Pisco / Grappe', price: '4,50 €' },
-      { name: 'Rum Diplomatico / Whisky', price: '7,00 €' },
-      { name: 'Shot Classici', price: '3,00 €' },
-      { name: 'Shot Artigianali', price: '3,50 €' },
-      { name: 'Shot Tequila', price: '3,00 €' },
-      { name: 'Shot Diplomatico', price: '5,00 €' },
-    ],
-  },
-  {
-    id: 'vini',
-    label: 'Vini & Birre',
-    icon: <IconWine />,
-    items: [
-      { name: 'Montepulciano DOC', price: '5,00 € / 20,00 €', note: 'Calice / Bottiglia — Formula Aperitivo 9,00 € — Take away 15,00 €' },
-      { name: 'Valpolicella', price: '6,00 € / 24,00 €', note: 'Calice / Bottiglia — Formula Aperitivo 10,00 € — Take away 18,00 €' },
-      { name: 'Morellino di Scansano Bio', price: '6,00 € / 24,00 €', note: 'Calice / Bottiglia — Formula Aperitivo 10,00 € — Take away 18,00 €' },
-      { name: 'Nebbiolo Langhe DOC', price: '6,00 € / 24,00 €', note: 'Calice / Bottiglia — Formula Aperitivo 10,00 € — Take away 18,00 €' },
-      { name: 'Prosecco DOC Extra Brut', price: '6,00 € / 22,00 €', note: 'Calice / Bottiglia — Formula Aperitivo 10,00 € — Take away 15,00 €' },
-      { name: 'HB Pils alla spina', price: '3,00 – 5,00 €', note: '0,2L 3,00 € / 0,4L 5,00 €' },
-      { name: 'America IPA 6,1%', price: '3,50 – 6,00 €', note: '0,2L 3,50 € / 0,4L 6,00 €' },
-      { name: 'Lattine War Artigianali', price: '5,00 €', note: 'Take away' },
+    Icon: IconVino,
+    titolo: 'Aperitivo & Vini',
+    orario: 'dalle 18:00',
+    bg: '#2A0E12',
+    accentColor: '#C4757E',
+    borderColor: 'rgba(155,74,84,0.2)',
+    textColor: '#FDF8F0',
+    subColor: 'rgba(253,248,240,0.45)',
+    voci: [
+      { nome: 'Vino sfuso al calice', prezzo: '€3,00' },
+      { nome: 'Bottiglia (calice)', prezzo: '€4,50' },
+      { nome: 'Birra artigianale', prezzo: '€4,50' },
+      { nome: 'Spritz della casa', prezzo: '€6,00' },
+      { nome: 'Vale Doppio — mercoledì sera', prezzo: '€8 × 2' },
+      { nome: 'Tagliere accompagnamento', prezzo: '€8,00' },
     ],
   },
 ]
 
 export default function Menu() {
-  const [active, setActive] = useState('caffe')
-  const current = categories.find(c => c.id === active)
-
   return (
-    <section id="menu" className="py-28 px-6">
-      <div className="max-w-4xl mx-auto">
-
-        <div className="text-center mb-14">
-          <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="inline-block text-[13px] font-body font-medium tracking-[0.2em] uppercase text-[#722F37] mb-4"
-          >
-            Il menu
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-display font-medium text-[#3C2415] leading-tight"
-          >
-            Cosa trovi da noi
-          </motion.h2>
+    <section
+      id="menu"
+      style={{ background: '#F9F3E8', padding: '120px 32px' }}
+    >
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
+          <Reveal>
+            <p style={{
+              fontSize: 11, fontWeight: 600,
+              letterSpacing: '0.3em', textTransform: 'uppercase',
+              color: '#722F37', marginBottom: 16,
+            }}>
+              Il menu
+            </p>
+            <h2 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: 'clamp(2rem, 3.5vw, 2.6rem)',
+              color: '#3C2415', lineHeight: 1.25, marginBottom: 16,
+            }}>
+              Dalla mattina alla notte
+            </h2>
+            <p style={{
+              fontSize: 15, color: 'rgba(60,36,21,0.6)',
+              maxWidth: 440, margin: '0 auto', lineHeight: 1.75,
+            }}>
+              Ingredienti scelti, stagionali, locali. Il menu cambia con il ritmo delle stagioni.
+            </p>
+          </Reveal>
         </div>
 
-        {/* Category tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex gap-2 justify-center mb-10 flex-wrap"
-        >
-          {categories.map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => setActive(cat.id)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-[13px] font-body
-                         font-medium transition-all duration-300 ${
-                active === cat.id
-                  ? 'bg-[#722F37] text-[#FDF8F0] shadow-md'
-                  : 'bg-[#FDF8F0]/60 backdrop-blur-sm text-[#3C2415] hover:bg-[#FDF8F0]/80 border border-[#3C2415]/15'
-              }`}
-            >
-              {cat.icon}
-              {cat.label}
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Badge e footer di categoria */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.35 }}
-          >
-            {current.badge && (
-              <div className="text-center mb-6">
-                <span className="inline-block px-4 py-1.5 rounded-full bg-[#722F37]/10
-                                 text-[#722F37] text-[12px] font-body font-medium tracking-wide uppercase">
-                  {current.badge}
-                </span>
-              </div>
-            )}
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {current.items.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05, duration: 0.4 }}
-                  className="flex justify-between items-start p-5 rounded-2xl
-                             bg-[#FDF8F0]/55 backdrop-blur-sm border border-[#3C2415]/10
-                             hover:bg-[#FDF8F0]/70 transition-all duration-300"
-                >
-                  <div className="flex-1 pr-4">
-                    <p className="font-body font-medium text-[#3C2415] text-[15px]">{item.name}</p>
-                    {item.note && (
-                      <p className="text-[12px] text-[#3C2415]/50 mt-0.5 font-body leading-snug">{item.note}</p>
-                    )}
-                  </div>
-                  <span className="font-display text-[#722F37] font-medium text-[14px] whitespace-nowrap">
-                    {item.price}
+        {/* Cards */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: 20,
+          alignItems: 'start',
+        }} className="menu-grid">
+          {CATEGORIE.map((cat, i) => (
+            <Reveal key={cat.titolo} delay={i * 0.1}>
+              <div style={{
+                background: cat.bg,
+                borderRadius: 20,
+                overflow: 'hidden',
+                border: `1px solid ${cat.borderColor}`,
+              }}>
+                {/* Header card */}
+                <div style={{
+                  padding: '32px 28px 24px',
+                  borderBottom: `1px solid ${cat.borderColor}`,
+                }}>
+                  <span style={{ display: 'block', marginBottom: 12 }}>
+                    <cat.Icon color={cat.accentColor} />
                   </span>
-                </motion.div>
-              ))}
-            </div>
+                  <h3 style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: 22, fontWeight: 600,
+                    color: cat.textColor, marginBottom: 6,
+                  }}>
+                    {cat.titolo}
+                  </h3>
+                  <p style={{
+                    fontSize: 11, fontWeight: 600,
+                    letterSpacing: '0.22em', textTransform: 'uppercase',
+                    color: cat.accentColor,
+                  }}>
+                    {cat.orario}
+                  </p>
+                </div>
 
-            {current.footer && (
-              <p className="text-center text-[13px] text-[#3C2415]/55 font-body mt-6 italic">
-                {current.footer}
-              </p>
-            )}
-          </motion.div>
-        </AnimatePresence>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center text-[13px] text-[#3C2415]/40 font-body mt-10"
-        >
-          Il menu può variare in base alla disponibilità giornaliera e stagionale.
-        </motion.p>
-
+                {/* Voci */}
+                <div style={{ padding: '24px 28px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+                    {cat.voci.map((v, j) => (
+                      <div
+                        key={v.nome}
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          padding: '11px 0',
+                          borderBottom: j < cat.voci.length - 1 ? `1px solid ${cat.borderColor}` : 'none',
+                        }}
+                      >
+                        <span style={{ fontSize: 14, color: cat.textColor, fontWeight: 400, opacity: 0.85 }}>
+                          {v.nome}
+                        </span>
+                        <span style={{ fontSize: 13, color: cat.accentColor, fontWeight: 600, flexShrink: 0, marginLeft: 12 }}>
+                          {v.prezzo}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  {cat.note && (
+                    <p style={{
+                      fontSize: 11, color: cat.subColor,
+                      marginTop: 16, fontStyle: 'italic',
+                    }}>
+                      {cat.note}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .menu-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (min-width: 601px) and (max-width: 900px) {
+          .menu-grid { grid-template-columns: 1fr 1fr !important; }
+        }
+      `}</style>
     </section>
   )
 }
