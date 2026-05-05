@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar        from './components/Navbar'
 import Hero          from './components/Hero'
 import ChiSiamo      from './components/ChiSiamo'
-import SezioneGiorno from './components/SezioneGiorno'
 import SezioneSera   from './components/SezioneSera'
 import SezioneGiovedi from './components/SezioneGiovedi'
 import Footer        from './components/Footer'
@@ -20,8 +19,7 @@ export default function App() {
             <>
               <Hero />
               <ChiSiamo />
-              <SezioneGiorno />
-              <SezioneSera />
+<SezioneSera />
               <SezioneGiovedi />
             </>
           } />
