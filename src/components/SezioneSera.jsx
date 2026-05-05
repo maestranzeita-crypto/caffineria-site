@@ -18,152 +18,110 @@ function Reveal({ children, delay = 0 }) {
 
 export default function SezioneSera() {
   return (
-    <section style={{ display: 'flex', minHeight: '90vh' }} className="sera-section">
+    <section style={{ position: 'relative', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
 
-      {/* Pannello testo — su desktop: foto2a.png; su mobile: nessuna immagine */}
-      <div className="sera-text-panel" style={{
-        flex: 1,
-        position: 'relative',
-        overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-      }}>
-        {/* Overlay scuro */}
-        <div className="sera-overlay" style={{
+      {/* Video sfondo */}
+      <video
+        autoPlay muted loop playsInline
+        style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(to right, rgba(20,5,8,0.75) 0%, rgba(20,5,8,0.75) 55%, rgba(20,5,8,0.97) 100%)',
-        }} />
+          width: '100%', height: '100%',
+          objectFit: 'cover',
+          zIndex: 0,
+        }}
+      >
+        <source src="/video1.mp4" type="video/mp4" />
+        <source src="/video1.mov" type="video/quicktime" />
+      </video>
 
-        {/* Testo */}
-        <div style={{ position: 'relative', zIndex: 2, padding: '80px 48px 80px 80px', width: '100%' }}>
-          <Reveal delay={0}>
-            <p style={{
-              fontSize: 11, fontWeight: 600,
-              letterSpacing: '0.3em', textTransform: 'uppercase',
-              color: '#ffffff', marginBottom: 20,
-            }}>
-              Di sera
-            </p>
-          </Reveal>
+      {/* Overlay scuro uniforme */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'rgba(10,3,5,0.62)',
+        zIndex: 1,
+      }} />
 
-          <Reveal delay={0.08}>
-            <h2 style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: 'clamp(2.4rem, 4vw, 3.4rem)',
-              color: '#ffffff',
-              lineHeight: 1.15,
-              marginBottom: 16,
-              letterSpacing: '-0.01em',
-            }}>
-              Vale Doppio
-            </h2>
-          </Reveal>
+      {/* Testo */}
+      <div className="sera-section-text" style={{ position: 'relative', zIndex: 2, padding: '80px 80px', width: '100%', maxWidth: 640 }}>
+        <Reveal delay={0}>
+          <p style={{
+            fontSize: 11, fontWeight: 600,
+            letterSpacing: '0.3em', textTransform: 'uppercase',
+            color: '#ffffff', marginBottom: 20,
+          }}>
+            Di sera
+          </p>
+        </Reveal>
 
-          <Reveal delay={0.16}>
-            <p style={{
-              fontSize: 11, fontWeight: 600,
-              letterSpacing: '0.28em', textTransform: 'uppercase',
-              color: '#ffffff', marginBottom: 32,
-            }}>
-              Ogni mercoledì sera
-            </p>
-          </Reveal>
+        <Reveal delay={0.08}>
+          <h2 style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: 'clamp(2.4rem, 4vw, 3.4rem)',
+            color: '#ffffff',
+            lineHeight: 1.15,
+            marginBottom: 16,
+            letterSpacing: '-0.01em',
+          }}>
+            Vale Doppio
+          </h2>
+        </Reveal>
 
-          <Reveal delay={0.24}>
-            <p style={{
-              fontSize: 17, lineHeight: 1.85,
-              color: '#ffffff',
-              maxWidth: 420,
-            }}>
-              Perché una volta sola non basta. Ogni mercoledì ti aspettiamo con la nostra offerta
-              speciale:{' '}
-              <span style={{ color: '#ffffff', fontWeight: 600 }}>
-                due Aperol Spritz al prezzo di €8
-              </span>
-              . Porta qualcuno con cui brindare — il mercoledì è fatto per condividere.
-            </p>
-          </Reveal>
+        <Reveal delay={0.16}>
+          <p style={{
+            fontSize: 11, fontWeight: 600,
+            letterSpacing: '0.28em', textTransform: 'uppercase',
+            color: '#ffffff', marginBottom: 32,
+          }}>
+            Ogni mercoledì sera
+          </p>
+        </Reveal>
 
-          <Reveal delay={0.34}>
-            <div style={{
-              display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 24, marginTop: 56,
-              paddingTop: 40,
-              borderTop: '1px solid rgba(253,248,240,0.1)',
-            }}>
-              {[
-                { val: '2', label: 'Aperol Spritz' },
-                { val: '€8', label: 'offerta serale' },
-                { val: 'Mer', label: 'ogni settimana' },
-              ].map(s => (
-                <div key={s.label} style={{ textAlign: 'center' }}>
-                  <p style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: 28, fontWeight: 700,
-                    color: '#ffffff', marginBottom: 4,
-                  }}>{s.val}</p>
-                  <p style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#ffffff' }}>
-                    {s.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </div>
+        <Reveal delay={0.24}>
+          <p style={{
+            fontSize: 17, lineHeight: 1.85,
+            color: '#ffffff',
+            maxWidth: 420,
+          }}>
+            Perché una volta sola non basta. Ogni mercoledì ti aspettiamo con la nostra offerta
+            speciale:{' '}
+            <span style={{ fontWeight: 600 }}>
+              due Aperol Spritz al prezzo di €8
+            </span>
+            . Porta qualcuno con cui brindare — il mercoledì è fatto per condividere.
+          </p>
+        </Reveal>
 
-      {/* Pannello video */}
-      <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }} className="sera-video-panel">
-        <div style={{
-          position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none',
-          background: 'linear-gradient(to right, rgba(20,5,8,0.97) 0%, transparent 40%)',
-        }} />
-        <video
-          autoPlay muted loop playsInline
-          style={{
-            position: 'absolute', inset: 0,
-            width: '100%', height: '100%',
-            objectFit: 'cover',
-          }}
-        >
-          <source src="/video1.mp4" type="video/mp4" />
-          <source src="/video1.mov" type="video/quicktime" />
-        </video>
+        <Reveal delay={0.34}>
+          <div style={{
+            display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 24, marginTop: 56,
+            paddingTop: 40,
+            borderTop: '1px solid rgba(255,255,255,0.15)',
+          }}>
+            {[
+              { val: '2', label: 'Aperol Spritz' },
+              { val: '€8', label: 'offerta serale' },
+              { val: 'Mer', label: 'ogni settimana' },
+            ].map(s => (
+              <div key={s.label} style={{ textAlign: 'center' }}>
+                <p style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: 28, fontWeight: 700,
+                  color: '#ffffff', marginBottom: 4,
+                }}>{s.val}</p>
+                <p style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#ffffff' }}>
+                  {s.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
 
       <style>{`
-        /* Desktop: immagine sul pannello testo */
-        .sera-text-panel {
-          background-image: url(/foto2a.png);
-          background-size: cover;
-          background-position: center;
-        }
-
         @media (max-width: 768px) {
-          .sera-section {
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-          }
-          /* Mobile: nessuna immagine, il video fa da sfondo */
-          .sera-text-panel {
-            background-image: none;
-            position: relative;
-            z-index: 1;
-          }
-          /* Su mobile l'overlay diventa uniforme invece di sfumare verso destra */
-          .sera-overlay {
-            background: rgba(20,5,8,0.72) !important;
-          }
-          /* Il video si posiziona assoluto coprendo tutta la sezione */
-          .sera-video-panel {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-          }
-          /* Nascondi il gradiente sinistro del video panel su mobile */
-          .sera-video-panel > div:first-child {
-            display: none;
+          .sera-section-text {
+            padding: 60px 28px !important;
           }
         }
       `}</style>
