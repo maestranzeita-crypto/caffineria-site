@@ -20,22 +20,16 @@ export default function SezioneSera() {
   return (
     <section style={{ display: 'flex', minHeight: '90vh' }} className="sera-section">
 
-      {/* Pannello sinistro — testo con foto2a.png (nascosta su mobile) */}
-      <div
-        className="sera-text-panel"
-        style={{
-          flex: 1,
-          position: 'relative',
-          overflow: 'hidden',
-          display: 'flex',
-          alignItems: 'center',
-          backgroundImage: 'url(/foto2a.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
+      {/* Pannello testo — su desktop: foto2a.png; su mobile: nessuna immagine */}
+      <div className="sera-text-panel" style={{
+        flex: 1,
+        position: 'relative',
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center',
+      }}>
         {/* Overlay scuro */}
-        <div style={{
+        <div className="sera-overlay" style={{
           position: 'absolute', inset: 0,
           background: 'linear-gradient(to right, rgba(20,5,8,0.75) 0%, rgba(20,5,8,0.75) 55%, rgba(20,5,8,0.97) 100%)',
         }} />
@@ -118,7 +112,7 @@ export default function SezioneSera() {
         </div>
       </div>
 
-      {/* Pannello destro — video */}
+      {/* Pannello video */}
       <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }} className="sera-video-panel">
         <div style={{
           position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none',
@@ -138,20 +132,38 @@ export default function SezioneSera() {
       </div>
 
       <style>{`
+        /* Desktop: immagine sul pannello testo */
+        .sera-text-panel {
+          background-image: url(/foto2a.png);
+          background-size: cover;
+          background-position: center;
+        }
+
         @media (max-width: 768px) {
           .sera-section {
             flex-direction: column;
             position: relative;
+            overflow: hidden;
           }
+          /* Mobile: nessuna immagine, il video fa da sfondo */
           .sera-text-panel {
-            background-image: none !important;
+            background-image: none;
             position: relative;
             z-index: 1;
           }
+          /* Su mobile l'overlay diventa uniforme invece di sfumare verso destra */
+          .sera-overlay {
+            background: rgba(20,5,8,0.72) !important;
+          }
+          /* Il video si posiziona assoluto coprendo tutta la sezione */
           .sera-video-panel {
             position: absolute;
             inset: 0;
-            min-height: unset;
+            z-index: 0;
+          }
+          /* Nascondi il gradiente sinistro del video panel su mobile */
+          .sera-video-panel > div:first-child {
+            display: none;
           }
         }
       `}</style>
