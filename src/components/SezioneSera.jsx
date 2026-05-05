@@ -18,7 +18,7 @@ function Reveal({ children, delay = 0 }) {
 
 export default function SezioneSera() {
   return (
-    <section style={{ position: 'relative', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
+    <section style={{ position: 'relative', minHeight: '110vh', display: 'flex', alignItems: 'center' }}>
 
       {/* Video sfondo */}
       <video
