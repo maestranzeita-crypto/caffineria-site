@@ -18,7 +18,7 @@ function Reveal({ children, delay = 0 }) {
 
 export default function SezioneGiovedi() {
   return (
-    <section style={{ position: 'relative', minHeight: '110vh', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+    <section className="giovedi-section" style={{ position: 'relative', minHeight: '110vh', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
 
       <video
         autoPlay muted loop playsInline
@@ -114,7 +114,8 @@ export default function SezioneGiovedi() {
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
+          .giovedi-section { justify-content: flex-start !important; }
           .giovedi-text { padding: 60px 28px !important; }
         }
       `}</style>
