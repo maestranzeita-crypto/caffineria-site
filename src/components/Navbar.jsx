@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link as ScrollLink } from 'react-scroll'
 import { Link, useLocation } from 'react-router-dom'
 
 export default function Navbar() {
@@ -13,8 +14,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const scrollLink = (anchor) =>
-    isMenu ? `/#${anchor}` : `#${anchor}`
+  const navClass = "font-body text-[15px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300 tracking-wide"
 
   return (
     <nav
@@ -25,20 +25,26 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 h-[72px] flex items-center justify-between">
-        <Link to="/" className="cursor-pointer">
-          <img src="/logo.png" alt="Caffineria" className="h-10 w-auto" />
-        </Link>
+        {isMenu ? (
+          <Link to="/" className="cursor-pointer">
+            <img src="/logo.png" alt="Caffineria" className="h-10 w-auto" />
+          </Link>
+        ) : (
+          <ScrollLink to="hero" smooth duration={600} className="cursor-pointer">
+            <img src="/logo.png" alt="Caffineria" className="h-10 w-auto" />
+          </ScrollLink>
+        )}
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
           <li>
-            <a
-              href={scrollLink('chi-siamo')}
-              className="font-body text-[15px] font-medium text-[#3C2415] cursor-pointer
-                         hover:text-[#722F37] transition-colors duration-300 tracking-wide"
-            >
-              Chi siamo
-            </a>
+            {isMenu ? (
+              <a href="/#chi-siamo" className={navClass}>Chi siamo</a>
+            ) : (
+              <ScrollLink to="chi-siamo" smooth duration={600} offset={-72} className={navClass}>
+                Chi siamo
+              </ScrollLink>
+            )}
           </li>
           <li>
             <Link
@@ -51,23 +57,25 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <a
-              href={scrollLink('sedi')}
-              className="font-body text-[15px] font-medium text-[#3C2415] cursor-pointer
-                         hover:text-[#722F37] transition-colors duration-300 tracking-wide"
-            >
-              Le sedi
-            </a>
+            {isMenu ? (
+              <a href="/#sedi" className={navClass}>Le sedi</a>
+            ) : (
+              <ScrollLink to="sedi" smooth duration={600} offset={-72} className={navClass}>
+                Le sedi
+              </ScrollLink>
+            )}
           </li>
           <li>
-            <a
-              href={scrollLink('sedi')}
-              className="px-5 py-2 rounded-full border border-[#722F37] text-[#722F37]
-                         text-[14px] font-medium hover:bg-[#722F37] hover:text-[#FDF8F0]
-                         transition-all duration-300 cursor-pointer"
-            >
-              Vieni a trovarci
-            </a>
+            {isMenu ? (
+              <a href="/#sedi" className="px-5 py-2 rounded-full border border-[#722F37] text-[#722F37] text-[14px] font-medium hover:bg-[#722F37] hover:text-[#FDF8F0] transition-all duration-300 cursor-pointer">
+                Vieni a trovarci
+              </a>
+            ) : (
+              <ScrollLink to="sedi" smooth duration={600} offset={-72}
+                className="px-5 py-2 rounded-full border border-[#722F37] text-[#722F37] text-[14px] font-medium hover:bg-[#722F37] hover:text-[#FDF8F0] transition-all duration-300 cursor-pointer">
+                Vieni a trovarci
+              </ScrollLink>
+            )}
           </li>
         </ul>
 
@@ -87,44 +95,30 @@ export default function Navbar() {
       <div className={`md:hidden bg-[#FDF8F0]/95 backdrop-blur-md overflow-hidden transition-all duration-300 ${open ? 'max-h-64' : 'max-h-0'}`}>
         <ul className="flex flex-col py-4 px-6 gap-4">
           <li>
-            <a
-              href={scrollLink('chi-siamo')}
-              onClick={() => setOpen(false)}
-              className="block font-body text-[16px] font-medium text-[#3C2415]
-                         cursor-pointer hover:text-[#722F37] transition-colors duration-300"
-            >
-              Chi siamo
-            </a>
+            {isMenu ? (
+              <a href="/#chi-siamo" onClick={() => setOpen(false)} className="block font-body text-[16px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300">Chi siamo</a>
+            ) : (
+              <ScrollLink to="chi-siamo" smooth duration={600} offset={-72} onClick={() => setOpen(false)} className="block font-body text-[16px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300">Chi siamo</ScrollLink>
+            )}
           </li>
           <li>
-            <Link
-              to="/menu"
-              onClick={() => setOpen(false)}
-              className="block font-body text-[16px] font-medium text-[#3C2415]
-                         cursor-pointer hover:text-[#722F37] transition-colors duration-300"
-            >
+            <Link to="/menu" onClick={() => setOpen(false)} className="block font-body text-[16px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300">
               Menu
             </Link>
           </li>
           <li>
-            <a
-              href={scrollLink('sedi')}
-              onClick={() => setOpen(false)}
-              className="block font-body text-[16px] font-medium text-[#3C2415]
-                         cursor-pointer hover:text-[#722F37] transition-colors duration-300"
-            >
-              Le sedi
-            </a>
+            {isMenu ? (
+              <a href="/#sedi" onClick={() => setOpen(false)} className="block font-body text-[16px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300">Le sedi</a>
+            ) : (
+              <ScrollLink to="sedi" smooth duration={600} offset={-72} onClick={() => setOpen(false)} className="block font-body text-[16px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300">Le sedi</ScrollLink>
+            )}
           </li>
           <li>
-            <a
-              href={scrollLink('sedi')}
-              onClick={() => setOpen(false)}
-              className="inline-block mt-1 px-5 py-2 rounded-full border border-[#722F37]
-                         text-[#722F37] text-[14px] font-medium cursor-pointer"
-            >
-              Vieni a trovarci
-            </a>
+            {isMenu ? (
+              <a href="/#sedi" onClick={() => setOpen(false)} className="inline-block mt-1 px-5 py-2 rounded-full border border-[#722F37] text-[#722F37] text-[14px] font-medium cursor-pointer">Vieni a trovarci</a>
+            ) : (
+              <ScrollLink to="sedi" smooth duration={600} offset={-72} onClick={() => setOpen(false)} className="inline-block mt-1 px-5 py-2 rounded-full border border-[#722F37] text-[#722F37] text-[14px] font-medium cursor-pointer">Vieni a trovarci</ScrollLink>
+            )}
           </li>
         </ul>
       </div>
