@@ -6,7 +6,6 @@ import Hero          from './components/Hero'
 import ChiSiamo      from './components/ChiSiamo'
 import SezioneGiorno from './components/SezioneGiorno'
 import SezioneSera   from './components/SezioneSera'
-import Sedi          from './components/Sedi'
 import Footer        from './components/Footer'
 import MenuPage      from './pages/MenuPage'
 
@@ -22,7 +21,6 @@ export default function App() {
               <ChiSiamo />
               <SezioneGiorno />
               <SezioneSera />
-              <Sedi />
             </>
           } />
           <Route path="/menu" element={<MenuPage />} />
