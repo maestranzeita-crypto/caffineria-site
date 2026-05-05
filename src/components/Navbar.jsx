@@ -2,19 +2,22 @@ import { useState, useEffect } from 'react'
 import { Link as ScrollLink } from 'react-scroll'
 import { Link, useLocation } from 'react-router-dom'
 
+const scrollNavLinks = [
+  { to: 'chi-siamo', label: 'Chi siamo' },
+  { to: 'sedi', label: 'Le sedi' },
+]
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const location = useLocation()
-  const isMenu = location.pathname === '/menu'
+  const { pathname } = useLocation()
+  const isMenu = pathname === '/menu'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
-  const navClass = "font-body text-[15px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300 tracking-wide"
 
   return (
     <nav
@@ -37,33 +40,25 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
+          {scrollNavLinks.map(({ to, label }) => (
+            <li key={to}>
+              {isMenu ? (
+                <a href={`/#${to}`} className="font-body text-[15px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300 tracking-wide">
+                  {label}
+                </a>
+              ) : (
+                <ScrollLink to={to} smooth duration={600} offset={-72}
+                  className="font-body text-[15px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300 tracking-wide">
+                  {label}
+                </ScrollLink>
+              )}
+            </li>
+          ))}
           <li>
-            {isMenu ? (
-              <a href="/#chi-siamo" className={navClass}>Chi siamo</a>
-            ) : (
-              <ScrollLink to="chi-siamo" smooth duration={600} offset={-72} className={navClass}>
-                Chi siamo
-              </ScrollLink>
-            )}
-          </li>
-          <li>
-            <Link
-              to="/menu"
-              className={`font-body text-[15px] font-medium cursor-pointer tracking-wide
-                         transition-colors duration-300 hover:text-[#722F37]
-                         ${isMenu ? 'text-[#722F37]' : 'text-[#3C2415]'}`}
-            >
+            <Link to="/menu"
+              className={`font-body text-[15px] font-medium tracking-wide transition-colors duration-300 hover:text-[#722F37] ${isMenu ? 'text-[#722F37]' : 'text-[#3C2415]'}`}>
               Menu
             </Link>
-          </li>
-          <li>
-            {isMenu ? (
-              <a href="/#sedi" className={navClass}>Le sedi</a>
-            ) : (
-              <ScrollLink to="sedi" smooth duration={600} offset={-72} className={navClass}>
-                Le sedi
-              </ScrollLink>
-            )}
           </li>
           <li>
             {isMenu ? (
@@ -80,11 +75,7 @@ export default function Navbar() {
         </ul>
 
         {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-[5px] p-2"
-          onClick={() => setOpen(!open)}
-          aria-label="Menu"
-        >
+        <button className="md:hidden flex flex-col gap-[5px] p-2" onClick={() => setOpen(!open)} aria-label="Menu">
           <span className={`block w-6 h-[2px] bg-[#3C2415] transition-all duration-300 ${open ? 'rotate-45 translate-y-[7px]' : ''}`} />
           <span className={`block w-6 h-[2px] bg-[#3C2415] transition-all duration-300 ${open ? 'opacity-0' : ''}`} />
           <span className={`block w-6 h-[2px] bg-[#3C2415] transition-all duration-300 ${open ? '-rotate-45 -translate-y-[7px]' : ''}`} />
@@ -94,30 +85,38 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div className={`md:hidden bg-[#FDF8F0]/95 backdrop-blur-md overflow-hidden transition-all duration-300 ${open ? 'max-h-64' : 'max-h-0'}`}>
         <ul className="flex flex-col py-4 px-6 gap-4">
+          {scrollNavLinks.map(({ to, label }) => (
+            <li key={to}>
+              {isMenu ? (
+                <a href={`/#${to}`} onClick={() => setOpen(false)}
+                  className="block font-body text-[16px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300">
+                  {label}
+                </a>
+              ) : (
+                <ScrollLink to={to} smooth duration={600} offset={-72} onClick={() => setOpen(false)}
+                  className="block font-body text-[16px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300">
+                  {label}
+                </ScrollLink>
+              )}
+            </li>
+          ))}
           <li>
-            {isMenu ? (
-              <a href="/#chi-siamo" onClick={() => setOpen(false)} className="block font-body text-[16px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300">Chi siamo</a>
-            ) : (
-              <ScrollLink to="chi-siamo" smooth duration={600} offset={-72} onClick={() => setOpen(false)} className="block font-body text-[16px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300">Chi siamo</ScrollLink>
-            )}
-          </li>
-          <li>
-            <Link to="/menu" onClick={() => setOpen(false)} className="block font-body text-[16px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300">
+            <Link to="/menu" onClick={() => setOpen(false)}
+              className="block font-body text-[16px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300">
               Menu
             </Link>
           </li>
           <li>
             {isMenu ? (
-              <a href="/#sedi" onClick={() => setOpen(false)} className="block font-body text-[16px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300">Le sedi</a>
+              <a href="/#sedi" onClick={() => setOpen(false)}
+                className="inline-block mt-1 px-5 py-2 rounded-full border border-[#722F37] text-[#722F37] text-[14px] font-medium cursor-pointer">
+                Vieni a trovarci
+              </a>
             ) : (
-              <ScrollLink to="sedi" smooth duration={600} offset={-72} onClick={() => setOpen(false)} className="block font-body text-[16px] font-medium text-[#3C2415] cursor-pointer hover:text-[#722F37] transition-colors duration-300">Le sedi</ScrollLink>
-            )}
-          </li>
-          <li>
-            {isMenu ? (
-              <a href="/#sedi" onClick={() => setOpen(false)} className="inline-block mt-1 px-5 py-2 rounded-full border border-[#722F37] text-[#722F37] text-[14px] font-medium cursor-pointer">Vieni a trovarci</a>
-            ) : (
-              <ScrollLink to="sedi" smooth duration={600} offset={-72} onClick={() => setOpen(false)} className="inline-block mt-1 px-5 py-2 rounded-full border border-[#722F37] text-[#722F37] text-[14px] font-medium cursor-pointer">Vieni a trovarci</ScrollLink>
+              <ScrollLink to="sedi" smooth duration={600} offset={-72} onClick={() => setOpen(false)}
+                className="inline-block mt-1 px-5 py-2 rounded-full border border-[#722F37] text-[#722F37] text-[14px] font-medium cursor-pointer">
+                Vieni a trovarci
+              </ScrollLink>
             )}
           </li>
         </ul>

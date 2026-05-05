@@ -8,24 +8,20 @@ import Sedi from './components/Sedi'
 import Footer from './components/Footer'
 import MenuPage from './pages/MenuPage'
 
-function HomePage() {
-  return (
-    <>
-      <Hero />
-      <ChiSiamo />
-      <DoppiaAnima />
-      <Sedi />
-    </>
-  )
-}
-
 export default function App() {
   return (
     <BrowserRouter>
       <Navbar />
       <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={
+            <>
+              <Hero />
+              <ChiSiamo />
+              <DoppiaAnima />
+              <Sedi />
+            </>
+          } />
           <Route path="/menu" element={<MenuPage />} />
         </Routes>
       </main>
