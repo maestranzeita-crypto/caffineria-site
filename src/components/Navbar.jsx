@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-scroll'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const NAV_LINKS = [
@@ -10,6 +10,8 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { pathname } = useLocation()
+  const solid = scrolled || pathname !== '/'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -25,9 +27,9 @@ export default function Navbar() {
           top: 0, left: 0, right: 0,
           zIndex: 100,
           transition: 'background 0.4s, box-shadow 0.4s',
-          background: scrolled ? 'rgba(253,248,240,0.88)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(14px)' : 'none',
-          boxShadow: scrolled ? '0 1px 0 rgba(60,36,21,0.08)' : 'none',
+          background: solid ? 'rgba(253,248,240,0.88)' : 'transparent',
+          backdropFilter: solid ? 'blur(14px)' : 'none',
+          boxShadow: solid ? '0 1px 0 rgba(60,36,21,0.08)' : 'none',
         }}
       >
         <div style={{
@@ -40,29 +42,29 @@ export default function Navbar() {
           justifyContent: 'space-between',
         }}>
           {/* Logo */}
-          <Link to="hero" smooth duration={600} style={{ cursor: 'pointer', flexShrink: 0 }}>
+          <RouterLink to="/" style={{ cursor: 'pointer', flexShrink: 0 }}>
             <img
               src="/logo.png"
               alt="Caffineria"
               style={{
                 maxHeight: 45,
                 display: 'block',
-                opacity: scrolled ? 1 : 0,
+                opacity: solid ? 1 : 0,
                 transition: 'opacity 0.4s',
               }}
             />
-          </Link>
+          </RouterLink>
 
           {/* Desktop links */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 36 }} className="hide-mobile">
             {NAV_LINKS.map(l => (
               <Link key={l.to} to={l.to} smooth duration={700} offset={-68}
-                style={{ cursor: 'pointer', fontSize: 14, fontWeight: 500, letterSpacing: '0.04em', color: scrolled ? '#3C2415' : '#FDF8F0', transition: 'color 0.4s', textDecoration: 'none' }}>
+                style={{ cursor: 'pointer', fontSize: 14, fontWeight: 500, letterSpacing: '0.04em', color: solid ? '#3C2415' : '#FDF8F0', transition: 'color 0.4s', textDecoration: 'none' }}>
                 {l.label}
               </Link>
             ))}
             <RouterLink to="/menu"
-              style={{ cursor: 'pointer', fontSize: 14, fontWeight: 500, letterSpacing: '0.04em', color: scrolled ? '#3C2415' : '#FDF8F0', transition: 'color 0.4s', textDecoration: 'none' }}>
+              style={{ cursor: 'pointer', fontSize: 14, fontWeight: 500, letterSpacing: '0.04em', color: solid ? '#3C2415' : '#FDF8F0', transition: 'color 0.4s', textDecoration: 'none' }}>
               Menu
             </RouterLink>
           </div>
@@ -80,7 +82,7 @@ export default function Navbar() {
             {[0, 1, 2].map(i => (
               <span key={i} style={{
                 display: 'block', height: 1.5, width: 24,
-                background: scrolled ? '#3C2415' : '#FDF8F0',
+                background: solid ? '#3C2415' : '#FDF8F0',
                 borderRadius: 2,
                 transition: 'background 0.4s',
               }} />
