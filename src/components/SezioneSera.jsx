@@ -119,7 +119,7 @@ export default function SezioneSera() {
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
           .sera-section-text {
             padding: 60px 28px !important;
           }
