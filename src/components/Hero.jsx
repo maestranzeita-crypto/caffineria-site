@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Link } from 'react-scroll'
+import { Link } from 'react-router-dom'
 
 export default function Hero() {
   return (
@@ -86,10 +86,7 @@ export default function Hero() {
           style={{ marginTop: 8, display: 'flex', justifyContent: 'center' }}
         >
           <Link
-            to="menu"
-            smooth
-            duration={800}
-            offset={-68}
+            to="/menu"
             style={{
               cursor: 'pointer',
               padding: '13px 30px',
@@ -99,6 +96,7 @@ export default function Hero() {
               fontSize: 14,
               fontWeight: 600,
               letterSpacing: '0.04em',
+              textDecoration: 'none',
             }}
           >
             Scopri il menu
