@@ -80,25 +80,25 @@ export default function Footer() {
         </Reveal>
 
         <Reveal delay={0.24}>
-          <p style={{ fontSize: 11, color: 'rgba(253,248,240,0.18)', letterSpacing: '0.05em' }}>
+          <p style={{ fontSize: 12, color: 'rgba(253,248,240,0.45)', letterSpacing: '0.05em' }}>
             made with ♥ by{' '}
             <a
               href="https://alonzoita.com"
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                color: 'rgba(253,248,240,0.35)',
+                color: 'rgba(253,248,240,0.7)',
                 textDecoration: 'none',
-                borderBottom: '1px solid rgba(253,248,240,0.2)',
+                borderBottom: '1px solid rgba(253,248,240,0.4)',
                 transition: 'color 0.2s, border-color 0.2s',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.color = 'rgba(253,248,240,0.7)'
-                e.currentTarget.style.borderColor = 'rgba(253,248,240,0.5)'
+                e.currentTarget.style.color = '#FDF8F0'
+                e.currentTarget.style.borderColor = 'rgba(253,248,240,0.8)'
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.color = 'rgba(253,248,240,0.35)'
-                e.currentTarget.style.borderColor = 'rgba(253,248,240,0.2)'
+                e.currentTarget.style.color = 'rgba(253,248,240,0.7)'
+                e.currentTarget.style.borderColor = 'rgba(253,248,240,0.4)'
               }}
             >
               Alonzo Ita
