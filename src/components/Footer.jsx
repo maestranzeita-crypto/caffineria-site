@@ -78,6 +78,33 @@ export default function Footer() {
             © {new Date().getFullYear()} Caffineria. Tutti i diritti riservati.
           </p>
         </Reveal>
+
+        <Reveal delay={0.24}>
+          <p style={{ fontSize: 11, color: 'rgba(253,248,240,0.18)', letterSpacing: '0.05em' }}>
+            made with ♥ by{' '}
+            <a
+              href="https://alonzoita.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: 'rgba(253,248,240,0.35)',
+                textDecoration: 'none',
+                borderBottom: '1px solid rgba(253,248,240,0.2)',
+                transition: 'color 0.2s, border-color 0.2s',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.color = 'rgba(253,248,240,0.7)'
+                e.currentTarget.style.borderColor = 'rgba(253,248,240,0.5)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.color = 'rgba(253,248,240,0.35)'
+                e.currentTarget.style.borderColor = 'rgba(253,248,240,0.2)'
+              }}
+            >
+              Alonzo Ita
+            </a>
+          </p>
+        </Reveal>
       </div>
     </footer>
   )
