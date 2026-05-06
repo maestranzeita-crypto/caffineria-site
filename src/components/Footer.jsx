@@ -40,7 +40,6 @@ export default function Footer() {
                 fontSize: 14, fontWeight: 500,
                 color: 'rgba(253,248,240,0.65)',
                 textDecoration: 'none',
-                transition: 'color 0.2s',
               }}
             >
               <IgIcon />
@@ -51,7 +50,7 @@ export default function Footer() {
               style={{
                 display: 'flex', alignItems: 'center', gap: 8,
                 fontSize: 14,
-                color: 'rgba(253,248,240,0.45)',
+                color: 'rgba(253,248,240,0.65)',
                 textDecoration: 'none',
               }}
             >
@@ -66,7 +65,7 @@ export default function Footer() {
             fontFamily: "'Playfair Display', serif",
             fontStyle: 'italic',
             fontSize: 14,
-            color: 'rgba(253,248,240,0.25)',
+            color: 'rgba(253,248,240,0.65)',
             letterSpacing: '0.05em',
           }}>
             caffè &amp; vino · Milano
@@ -74,37 +73,35 @@ export default function Footer() {
         </Reveal>
 
         <Reveal delay={0.18}>
-          <p style={{ fontSize: 11, color: 'rgba(253,248,240,0.15)', letterSpacing: '0.05em' }}>
+          <p style={{ fontSize: 11, color: 'rgba(253,248,240,0.65)', letterSpacing: '0.05em' }}>
             © {new Date().getFullYear()} Caffineria. Tutti i diritti riservati.
           </p>
         </Reveal>
 
-        <Reveal delay={0.24}>
-          <p style={{ fontSize: 12, color: 'rgba(253,248,240,0.45)', letterSpacing: '0.05em' }}>
-            made with ♥ by{' '}
-            <a
-              href="https://alonzoita.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                color: 'rgba(253,248,240,0.7)',
-                textDecoration: 'none',
-                borderBottom: '1px solid rgba(253,248,240,0.4)',
-                transition: 'color 0.2s, border-color 0.2s',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.color = '#FDF8F0'
-                e.currentTarget.style.borderColor = 'rgba(253,248,240,0.8)'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.color = 'rgba(253,248,240,0.7)'
-                e.currentTarget.style.borderColor = 'rgba(253,248,240,0.4)'
-              }}
-            >
-              Alonzo Ita
-            </a>
-          </p>
-        </Reveal>
+        <p style={{ fontSize: 12, color: 'rgba(253,248,240,0.65)', letterSpacing: '0.05em', margin: 0 }}>
+          made with ♥ by{' '}
+          <a
+            href="https://alonzoita.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: 'rgba(253,248,240,0.65)',
+              textDecoration: 'none',
+              borderBottom: '1px solid rgba(253,248,240,0.4)',
+              transition: 'color 0.2s, border-color 0.2s',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.color = '#FDF8F0'
+              e.currentTarget.style.borderColor = 'rgba(253,248,240,0.8)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.color = 'rgba(253,248,240,0.65)'
+              e.currentTarget.style.borderColor = 'rgba(253,248,240,0.4)'
+            }}
+          >
+            Alonzo Ita
+          </a>
+        </p>
       </div>
     </footer>
   )
