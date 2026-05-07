@@ -77,11 +77,16 @@ export default function Navbar() {
               style={{ cursor: 'pointer', fontSize: 14, fontWeight: 500, letterSpacing: '0.04em', color: solid ? '#3C2415' : '#FDF8F0', transition: 'color 0.4s', textDecoration: 'none' }}>
               Menu
             </RouterLink>
+          </div>
+
+          {/* Destra: Instagram (desktop) + Burger (mobile) */}
+          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
             <a
               href="https://instagram.com/caffineria"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
+              className="hide-mobile"
               style={{
                 display: 'flex', alignItems: 'center',
                 color: solid ? '#3C2415' : '#FDF8F0',
@@ -91,28 +96,25 @@ export default function Navbar() {
             >
               <IgIcon />
             </a>
+            <button
+              className="show-mobile"
+              onClick={() => setMenuOpen(o => !o)}
+              aria-label="Apri menu"
+              style={{
+                background: 'none', border: 'none', cursor: 'pointer',
+                display: 'none', flexDirection: 'column', gap: 5, padding: 4,
+              }}
+            >
+              {[0, 1, 2].map(i => (
+                <span key={i} style={{
+                  display: 'block', height: 1.5, width: 24,
+                  background: solid ? '#3C2415' : '#FDF8F0',
+                  borderRadius: 2,
+                  transition: 'background 0.4s',
+                }} />
+              ))}
+            </button>
           </div>
-
-          {/* Burger mobile */}
-          <button
-            className="show-mobile"
-            onClick={() => setMenuOpen(o => !o)}
-            aria-label="Apri menu"
-            style={{
-              background: 'none', border: 'none', cursor: 'pointer',
-              display: 'none', flexDirection: 'column', gap: 5, padding: 4,
-              marginLeft: 'auto',
-            }}
-          >
-            {[0, 1, 2].map(i => (
-              <span key={i} style={{
-                display: 'block', height: 1.5, width: 24,
-                background: solid ? '#3C2415' : '#FDF8F0',
-                borderRadius: 2,
-                transition: 'background 0.4s',
-              }} />
-            ))}
-          </button>
         </div>
       </nav>
 
