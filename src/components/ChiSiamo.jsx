@@ -111,6 +111,22 @@ export default function ChiSiamo() {
           </Reveal>
         </div>
 
+        {/* Foto */}
+        <FadeIn delay={0.2}>
+          <div style={{
+            borderRadius: 16,
+            overflow: 'hidden',
+            boxShadow: '0 20px 60px rgba(60,36,21,0.18)',
+            aspectRatio: '3/4',
+          }}>
+            <img
+              src="/foto2.jpg"
+              alt="Caffineria"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          </div>
+        </FadeIn>
+
       </div>
 
       <style>{`
