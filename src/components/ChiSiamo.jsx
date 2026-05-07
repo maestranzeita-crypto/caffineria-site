@@ -46,8 +46,8 @@ export default function ChiSiamo() {
               lineHeight: 1.25,
               marginBottom: 28,
             }}>
-              Nate dalla nostalgia,<br />
-              <em>costruite con amore.</em>
+              Un posto da chiamare casa,<br />
+              <em>una storia da custodire.</em>
             </h2>
           </Reveal>
 
@@ -58,22 +58,44 @@ export default function ChiSiamo() {
               color: 'rgba(60,36,21,0.72)',
               marginBottom: 20,
             }}>
-              Caffineria nasce da un gruppo di ragazze italiane di ritorno dall'estero. Dopo anni fuori, ci siamo ritrovate a sentire la mancanza di due cose semplici: il caffè al bar la mattina e il vino con gli amici la sera.
+              Ci sono posti che non sono solo bar. Sono angoli di quotidianità, dove ci si incontra, le giornate iniziano con il profumo di caffè e le serate si chiudono con un brindisi tra amici. Caffineria è sempre stato tutto questo: un punto in cui ritrovarsi e da chiamare casa.
             </p>
           </Reveal>
 
-          <Reveal delay={0.22}>
+          <Reveal delay={0.20}>
+            <p style={{
+              fontSize: 16,
+              lineHeight: 1.8,
+              color: 'rgba(60,36,21,0.72)',
+              marginBottom: 20,
+            }}>
+              Tanti anni fa, tre ragazze con un'idea e tanta passione hanno deciso di creare qualcosa di speciale. Hanno immaginato, costruito e fatto crescere questo posto con dedizione, sorrisi e tante tazzine di caffè.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.24}>
+            <p style={{
+              fontSize: 16,
+              lineHeight: 1.8,
+              color: 'rgba(60,36,21,0.72)',
+              marginBottom: 20,
+            }}>
+              Ma in questa storia c'era già qualcuno che amava Caffineria quanto loro. Cinzia, che giorno dopo giorno ha lavorato al loro fianco, imparando ogni segreto del mestiere, condividendo progetti, sogni e giornate dietro al bancone. Qui è cresciuta, qui ha imparato ad accogliere i clienti con un sorriso sincero, qui ha visto Caffineria diventare un luogo speciale, pieno di vita e di storie.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.28}>
             <p style={{
               fontSize: 16,
               lineHeight: 1.8,
               color: 'rgba(60,36,21,0.72)',
               marginBottom: 40,
             }}>
-              Così abbiamo deciso di creare il posto che volevamo trovare — non solo un locale, ma un rituale quotidiano. Dalla prima brioche all'ultimo calice.
+              Ed è per questo che, quando è arrivato il momento di passare il testimone, Cinzia ha scelto di esserci. Ha colto l'occasione per portare avanti questa storia con lo stesso entusiasmo e la stessa passione di sempre.
             </p>
           </Reveal>
 
-          <Reveal delay={0.28}>
+          <Reveal delay={0.34}>
             <blockquote style={{
               fontFamily: "'Playfair Display', serif",
               fontSize: 22,
@@ -84,7 +106,7 @@ export default function ChiSiamo() {
               margin: 0,
               lineHeight: 1.4,
             }}>
-              "Ci mettiamo testa, corpo e anima."
+              "Certi posti meritano di continuare a vivere."
             </blockquote>
           </Reveal>
         </div>
