@@ -6,7 +6,10 @@ export default function MenuPage() {
     <div style={{ background: '#FDF8F0', minHeight: '100vh' }}>
       {/* Hero header */}
       <div style={{
-        background: 'linear-gradient(160deg, #2A0A0F 0%, #4A1520 60%, #722F37 100%)',
+        backgroundImage: 'linear-gradient(160deg, rgba(42,10,15,0.82) 0%, rgba(74,21,32,0.78) 60%, rgba(114,47,55,0.72) 100%), url(/foto2a.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         paddingTop: 140,
         paddingBottom: 72,
         paddingLeft: 24,
