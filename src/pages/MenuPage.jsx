@@ -8,7 +8,7 @@ export default function MenuPage() {
       <div style={{
         backgroundImage: 'linear-gradient(160deg, rgba(42,10,15,0.82) 0%, rgba(74,21,32,0.78) 60%, rgba(114,47,55,0.72) 100%), url(/foto2a.png)',
         backgroundSize: 'cover',
-        backgroundPosition: 'center 20%',
+        backgroundPosition: 'center 80%',
         backgroundRepeat: 'no-repeat',
         paddingTop: 140,
         paddingBottom: 72,
