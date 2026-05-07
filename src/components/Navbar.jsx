@@ -7,6 +7,16 @@ const NAV_LINKS = [
   { to: 'chi-siamo', label: 'Chi siamo' },
 ]
 
+function IgIcon() {
+  return (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+    </svg>
+  )
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -67,6 +77,20 @@ export default function Navbar() {
               style={{ cursor: 'pointer', fontSize: 14, fontWeight: 500, letterSpacing: '0.04em', color: solid ? '#3C2415' : '#FDF8F0', transition: 'color 0.4s', textDecoration: 'none' }}>
               Menu
             </RouterLink>
+            <a
+              href="https://instagram.com/caffineria"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              style={{
+                display: 'flex', alignItems: 'center',
+                color: solid ? '#3C2415' : '#FDF8F0',
+                transition: 'color 0.4s',
+                textDecoration: 'none',
+              }}
+            >
+              <IgIcon />
+            </a>
           </div>
 
           {/* Burger mobile */}
@@ -76,7 +100,7 @@ export default function Navbar() {
             aria-label="Apri menu"
             style={{
               background: 'none', border: 'none', cursor: 'pointer',
-              display: 'flex', flexDirection: 'column', gap: 5, padding: 4,
+              display: 'none', flexDirection: 'column', gap: 5, padding: 4,
             }}
           >
             {[0, 1, 2].map(i => (
@@ -122,13 +146,22 @@ export default function Navbar() {
               style={{ cursor: 'pointer', fontSize: 16, fontWeight: 500, color: '#3C2415', padding: '12px 0', borderBottom: '1px solid rgba(60,36,21,0.07)', textDecoration: 'none', display: 'block' }}>
               Menu
             </RouterLink>
+            <a
+              href="https://instagram.com/caffineria"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 16, fontWeight: 500, color: '#3C2415', padding: '12px 0', textDecoration: 'none' }}
+            >
+              <IgIcon />
+              @caffineria
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
 
       <style>{`
         .hide-mobile { display: flex; }
-        .show-mobile { display: none; }
+        .show-mobile { display: none !important; }
         @media (max-width: 768px) {
           .hide-mobile { display: none !important; }
           .show-mobile { display: flex !important; }
