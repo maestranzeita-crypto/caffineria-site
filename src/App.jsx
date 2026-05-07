@@ -7,7 +7,9 @@ import ChiSiamo      from './components/ChiSiamo'
 import SezioneSera   from './components/SezioneSera'
 import SezioneGiovedi from './components/SezioneGiovedi'
 import Footer        from './components/Footer'
+import CookieBanner  from './components/CookieBanner'
 import MenuPage      from './pages/MenuPage'
+import PrivacyPage   from './pages/PrivacyPage'
 
 export default function App() {
   return (
@@ -24,8 +26,10 @@ export default function App() {
             </>
           } />
           <Route path="/menu" element={<MenuPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
         </Routes>
         <Footer />
+        <CookieBanner />
       </div>
     </BrowserRouter>
   )

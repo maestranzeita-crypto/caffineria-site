@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Reveal } from './Motion'
 
 function IgIcon() {
@@ -73,8 +74,11 @@ export default function Footer() {
         </Reveal>
 
         <Reveal delay={0.18}>
-          <p style={{ fontSize: 11, color: 'rgba(253,248,240,0.65)', letterSpacing: '0.05em' }}>
-            © {new Date().getFullYear()} Caffineria. Tutti i diritti riservati.
+          <p style={{ fontSize: 11, color: 'rgba(253,248,240,0.65)', letterSpacing: '0.05em', textAlign: 'center' }}>
+            © {new Date().getFullYear()} Caffineria. Tutti i diritti riservati.{' '}
+            <Link to="/privacy" style={{ color: 'rgba(253,248,240,0.65)', textDecoration: 'underline' }}>
+              Privacy Policy
+            </Link>
           </p>
         </Reveal>
 
