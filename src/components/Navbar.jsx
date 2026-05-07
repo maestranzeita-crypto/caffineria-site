@@ -49,7 +49,7 @@ export default function Navbar() {
           height: 68,
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between',
+          position: 'relative',
         }}>
           {/* Logo */}
           <RouterLink to="/" style={{ cursor: 'pointer', flexShrink: 0 }}>
@@ -65,8 +65,8 @@ export default function Navbar() {
             />
           </RouterLink>
 
-          {/* Desktop links */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 36 }} className="hide-mobile">
+          {/* Desktop links — centrati */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 36, position: 'absolute', left: '50%', transform: 'translateX(-50%)' }} className="hide-mobile">
             {NAV_LINKS.map(l => (
               <Link key={l.to} to={l.to} smooth duration={700} offset={-68}
                 style={{ cursor: 'pointer', fontSize: 14, fontWeight: 500, letterSpacing: '0.04em', color: solid ? '#3C2415' : '#FDF8F0', transition: 'color 0.4s', textDecoration: 'none' }}>
@@ -101,6 +101,7 @@ export default function Navbar() {
             style={{
               background: 'none', border: 'none', cursor: 'pointer',
               display: 'none', flexDirection: 'column', gap: 5, padding: 4,
+              marginLeft: 'auto',
             }}
           >
             {[0, 1, 2].map(i => (
