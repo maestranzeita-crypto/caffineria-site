@@ -63,13 +63,12 @@ export default function Footer() {
 
         <Reveal delay={0.1}>
           <p style={{
-            fontFamily: "'Playfair Display', serif",
-            fontStyle: 'italic',
-            fontSize: 14,
-            color: 'rgba(253,248,240,0.65)',
-            letterSpacing: '0.05em',
+            fontSize: 13,
+            color: 'rgba(253,248,240,0.55)',
+            letterSpacing: '0.03em',
+            textAlign: 'center',
           }}>
-            caffè &amp; vino · Milano
+            Via Privata Giovanni Battista Prandina, 1 — 20128 Milano (MI)
           </p>
         </Reveal>
 
