@@ -183,9 +183,9 @@ const CATEGORIES = [
       { name: 'Morellino di Scansano Bio', price: '6,00 / 24,00 €', note: 'Calice / Bottiglia — Aperitivo 10 € — Take away 18 €' },
       { name: 'Nebbiolo Langhe DOC', price: '6,00 / 24,00 €', note: 'Calice / Bottiglia — Aperitivo 10 € — Take away 18 €' },
       { name: 'Prosecco DOC Extra Brut', price: '6,00 / 22,00 €', note: 'Calice / Bottiglia — Aperitivo 10 € — Take away 15 €' },
-      { name: 'HB Pils alla spina', price: '3,00 – 5,00 €', note: '0,2L / 0,4L' },
-      { name: 'America IPA 6,1%', price: '3,50 – 6,00 €', note: '0,2L / 0,4L' },
-      { name: 'Lattine War Artigianali', price: '5,00 €', note: 'Take away' },
+      { name: 'HB Pils alla spina', price: '3,00 – 5,00 €', note: '0,2L / 0,4L', beer: true },
+      { name: 'America IPA 6,1%', price: '3,50 – 6,00 €', note: '0,2L / 0,4L', beer: true },
+      { name: 'Lattine War Artigianali', price: '5,00 €', note: 'Take away', beer: true },
     ],
   },
 ]
@@ -313,6 +313,19 @@ export default function Menu() {
                 const isOpen = openItems.has(key)
                 const hasAccordion = !!item.subItems
 
+                const cardBg = isOpen
+                  ? `${current.accent}14`
+                  : active === 'vini'
+                    ? item.beer ? '#FEFAE8' : '#FBE9EF'
+                    : '#fff'
+                const cardBorder = isOpen
+                  ? `1.5px solid ${current.accent}40`
+                  : active === 'vini'
+                    ? item.beer
+                      ? '1.5px solid rgba(180,140,20,0.2)'
+                      : '1.5px solid rgba(91,35,51,0.14)'
+                    : `1.5px solid rgba(60,36,21,0.08)`
+
                 return (
                   <motion.div
                     key={key}
@@ -321,10 +334,8 @@ export default function Menu() {
                     style={{
                       padding: '16px 20px',
                       borderRadius: 14,
-                      background: isOpen ? `${current.accent}14` : '#fff',
-                      border: isOpen
-                        ? `1.5px solid ${current.accent}40`
-                        : `1.5px solid rgba(60,36,21,0.08)`,
+                      background: cardBg,
+                      border: cardBorder,
                       boxShadow: isOpen
                         ? `0 4px 16px ${current.accent}22`
                         : '0 2px 10px rgba(60,36,21,0.07)',
