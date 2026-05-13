@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const IconCup = () => (
@@ -41,6 +41,15 @@ const IconWine = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
     <path d="M8 2h8l-2 8a4 4 0 0 1-4 0L8 2z" />
     <line x1="12" y1="10" x2="12" y2="20" /><line x1="8" y1="20" x2="16" y2="20" />
+  </svg>
+)
+const IconChevron = ({ open }) => (
+  <svg
+    width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"
+    style={{ transition: 'transform 0.25s ease', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', flexShrink: 0 }}
+  >
+    <polyline points="6 9 12 15 18 9" />
   </svg>
 )
 
@@ -99,7 +108,7 @@ const CATEGORIES = [
     Icon: IconCake,
     accent: '#B5500E',
     items: [
-      { name: 'Torte Artigianali', price: '3,50 €', note: 'Carrot Cake, Mela/Cannella, Limone' },
+      { name: 'Torte Artigianali', price: '3,50 €', subItems: ['Carrot Cake', 'Mela / Cannella', 'Limone'] },
       { name: 'Biscotti Cocco e Limone / Burro', price: '1,80 €' },
       { name: 'Biscotti Gocce di Cioccolato', price: '2,00 €' },
       { name: 'Muffin Artigianali', price: '3,50 €', note: 'Cioccolato, Mirtillo, Red Velvet' },
@@ -118,7 +127,7 @@ const CATEGORIES = [
       { name: 'Toast', price: '11,00 €' },
       { name: 'Bagel Salato', price: '12,00 €' },
       { name: 'Pancakes', price: '10,50 €' },
-      { name: 'Pane, Burro e Marmellata', price: 'incluso' },
+      { name: 'Pane, Burro e Marmellata', price: '10,00 €' },
     ],
   },
   {
@@ -192,9 +201,26 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.32, ease: 'easeOut' } },
 }
 
+const subItemVariants = {
+  hidden: { opacity: 0, height: 0, marginTop: 0 },
+  visible: { opacity: 1, height: 'auto', marginTop: 10, transition: { duration: 0.25, ease: 'easeOut' } },
+  exit: { opacity: 0, height: 0, marginTop: 0, transition: { duration: 0.18, ease: 'easeIn' } },
+}
+
 export default function Menu() {
   const [active, setActive] = useState('caffe')
+  const [openItems, setOpenItems] = useState(new Set())
   const current = CATEGORIES.find(c => c.id === active)
+
+  useEffect(() => { setOpenItems(new Set()) }, [active])
+
+  const toggleItem = (key) => {
+    setOpenItems(prev => {
+      const next = new Set(prev)
+      next.has(key) ? next.delete(key) : next.add(key)
+      return next
+    })
+  }
 
   return (
     <section style={{ padding: '56px 20px 100px', background: '#FDF8F0' }}>
@@ -282,55 +308,108 @@ export default function Menu() {
               gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
               gap: 10,
             }}>
-              {current.items.map((item, i) => (
-                <motion.div
-                  key={`${active}-${i}`}
-                  variants={itemVariants}
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-start',
-                    gap: 16,
-                    padding: '16px 20px',
-                    borderRadius: 14,
-                    background: '#fff',
-                    border: `1.5px solid rgba(60,36,21,0.08)`,
-                    boxShadow: '0 2px 10px rgba(60,36,21,0.07)',
-                  }}
-                >
-                  <div style={{ flex: 1 }}>
-                    <p style={{
-                      fontSize: 14,
-                      fontWeight: 500,
-                      color: '#3C2415',
-                      margin: 0,
-                      lineHeight: 1.4,
-                    }}>
-                      {item.name}
-                    </p>
-                    {item.note && (
-                      <p style={{
-                        fontSize: 12,
-                        color: 'rgba(60,36,21,0.45)',
-                        margin: '4px 0 0',
-                        lineHeight: 1.4,
-                      }}>
-                        {item.note}
-                      </p>
+              {current.items.map((item, i) => {
+                const key = `${active}-${i}`
+                const isOpen = openItems.has(key)
+                const hasAccordion = !!item.subItems
+
+                return (
+                  <motion.div
+                    key={key}
+                    variants={itemVariants}
+                    onClick={hasAccordion ? () => toggleItem(key) : undefined}
+                    style={{
+                      padding: '16px 20px',
+                      borderRadius: 14,
+                      background: isOpen ? `${current.accent}14` : '#fff',
+                      border: isOpen
+                        ? `1.5px solid ${current.accent}40`
+                        : `1.5px solid rgba(60,36,21,0.08)`,
+                      boxShadow: isOpen
+                        ? `0 4px 16px ${current.accent}22`
+                        : '0 2px 10px rgba(60,36,21,0.07)',
+                      cursor: hasAccordion ? 'pointer' : 'default',
+                      transition: 'background 0.25s ease, border 0.25s ease, box-shadow 0.25s ease',
+                    }}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
+                      <div style={{ flex: 1 }}>
+                        <p style={{
+                          fontSize: 14,
+                          fontWeight: 500,
+                          color: '#3C2415',
+                          margin: 0,
+                          lineHeight: 1.4,
+                        }}>
+                          {item.name}
+                        </p>
+                        {item.note && (
+                          <p style={{
+                            fontSize: 12,
+                            color: 'rgba(60,36,21,0.45)',
+                            margin: '4px 0 0',
+                            lineHeight: 1.4,
+                          }}>
+                            {item.note}
+                          </p>
+                        )}
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+                        <span style={{
+                          fontSize: 14,
+                          fontWeight: 700,
+                          color: current.accent,
+                          whiteSpace: 'nowrap',
+                          fontFamily: "'Playfair Display', serif",
+                        }}>
+                          {item.price}
+                        </span>
+                        {hasAccordion && (
+                          <span style={{ color: current.accent }}>
+                            <IconChevron open={isOpen} />
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {hasAccordion && (
+                      <AnimatePresence initial={false}>
+                        {isOpen && (
+                          <motion.div
+                            key="subitems"
+                            variants={subItemVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                            style={{ overflow: 'hidden' }}
+                          >
+                            <div style={{
+                              borderTop: `1px solid ${current.accent}30`,
+                              paddingTop: 10,
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: 6,
+                            }}>
+                              {item.subItems.map((sub, si) => (
+                                <p key={si} style={{
+                                  margin: 0,
+                                  fontSize: 13,
+                                  color: '#3C2415',
+                                  paddingLeft: 4,
+                                  lineHeight: 1.5,
+                                }}>
+                                  <span style={{ color: current.accent, marginRight: 6, fontWeight: 700 }}>—</span>
+                                  {sub}
+                                </p>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     )}
-                  </div>
-                  <span style={{
-                    fontSize: 14,
-                    fontWeight: 700,
-                    color: current.accent,
-                    whiteSpace: 'nowrap',
-                    fontFamily: "'Playfair Display', serif",
-                    flexShrink: 0,
-                  }}>
-                    {item.price}
-                  </span>
-                </motion.div>
-              ))}
+                  </motion.div>
+                )
+              })}
             </div>
 
             {/* Footer note */}
