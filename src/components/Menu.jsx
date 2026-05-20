@@ -161,7 +161,7 @@ const CATEGORIES = [
     Icon: IconCocktail,
     accent: '#9B3A6A',
     items: [
-      { name: 'Spritz Agn Ugo', price: '6,00 €' },
+      { name: 'Ugo Spritz', price: '6,00 €' },
       { name: 'Vodka Tonic Lemon', price: '8,00 €' },
       { name: 'Gin Tonic Columbus', price: '7,00 €' },
       { name: 'Gin Tonic Tanqueray', price: '8,00 €' },
