@@ -43,6 +43,13 @@ const IconWine = () => (
     <line x1="12" y1="10" x2="12" y2="20" /><line x1="8" y1="20" x2="16" y2="20" />
   </svg>
 )
+const IconBeer = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17 11h1a3 3 0 0 1 0 6h-1" />
+    <path d="M5 3h12l-2 15a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 3z" />
+    <path d="M5 7h12" />
+  </svg>
+)
 const IconChevron = ({ open }) => (
   <svg
     width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -167,24 +174,32 @@ const CATEGORIES = [
   },
   {
     id: 'vini',
-    label: 'Vini & Birre',
+    label: 'Vini',
     Icon: IconWine,
     accent: '#5B2333',
     intro: 'Tutti i nostri vini sono vini giovani denominazione di origine controllata.',
     items: [
-      { name: 'Pecorino Bio Ciprea', price: '5,00 / 20,00 €', note: 'Simone Capecci — Marche | Calice / Bottiglia — Aperitivo 9 € — Take away 15 €', white: true },
-      { name: 'Vermentino Bio Sardegna Naturale', price: '6,00 / 24,00 €', note: 'Cantina del Rimedio | Calice / Bottiglia — Aperitivo 10 € — Take away 18 €', white: true },
-      { name: 'Greco Bianco DOC Bio', price: '6,00 / 24,00 €', note: 'C. Brigante — Calabria | Calice / Bottiglia — Aperitivo 10 € — Take away 18 €', white: true },
-      { name: 'Montepulciano DOC', price: '5,00 / 20,00 €', note: 'Calice / Bottiglia — Aperitivo 9 € — Take away 15 €' },
-      { name: 'Valpolicella', price: '6,00 / 24,00 €', note: 'Calice / Bottiglia — Aperitivo 10 € — Take away 18 €' },
-      { name: 'Morellino di Scansano Bio', price: '6,00 / 24,00 €', note: 'Calice / Bottiglia — Aperitivo 10 € — Take away 18 €' },
-      { name: 'Nebbiolo Langhe DOC', price: '6,00 / 24,00 €', note: 'Calice / Bottiglia — Aperitivo 10 € — Take away 18 €' },
-      { name: 'Girò Gaglioppo Rosato', price: '5,00 / 20,00 €', note: 'C. Tenuta Iuzzolini — Calabria | Calice / Bottiglia — Aperitivo 9 € — Take away 14 €' },
-      { name: 'Marche Rosato IGP', price: '5,00 / 20,00 €', note: 'Sangiovese, Montepulciano — C. di Sante | Calice / Bottiglia — Aperitivo 9 € — Take away 14 €' },
+      { name: 'Montepulciano DOC', price: '5,00 / 20,00 €', note: 'Calice / Bottiglia — Aperitivo 9 € — Take away 15 €', rosso: true },
+      { name: 'Valpolicella', price: '6,00 / 24,00 €', note: 'Calice / Bottiglia — Aperitivo 10 € — Take away 18 €', rosso: true },
+      { name: 'Morellino di Scansano Bio', price: '6,00 / 24,00 €', note: 'Calice / Bottiglia — Aperitivo 10 € — Take away 18 €', rosso: true },
+      { name: 'Nebbiolo Langhe DOC', price: '6,00 / 24,00 €', note: 'Calice / Bottiglia — Aperitivo 10 € — Take away 18 €', rosso: true },
+      { name: 'Girò Gaglioppo Rosato', price: '5,00 / 20,00 €', note: 'C. Tenuta Iuzzolini — Calabria | Calice / Bottiglia — Aperitivo 9 € — Take away 14 €', rosato: true },
+      { name: 'Marche Rosato IGP', price: '5,00 / 20,00 €', note: 'Sangiovese, Montepulciano — C. di Sante | Calice / Bottiglia — Aperitivo 9 € — Take away 14 €', rosato: true },
+      { name: 'Pecorino Bio Ciprea', price: '5,00 / 20,00 €', note: 'Simone Capecci — Marche | Calice / Bottiglia — Aperitivo 9 € — Take away 15 €' },
+      { name: 'Vermentino Bio Sardegna Naturale', price: '6,00 / 24,00 €', note: 'Cantina del Rimedio | Calice / Bottiglia — Aperitivo 10 € — Take away 18 €' },
+      { name: 'Greco Bianco DOC Bio', price: '6,00 / 24,00 €', note: 'C. Brigante — Calabria | Calice / Bottiglia — Aperitivo 10 € — Take away 18 €' },
       { name: 'Prosecco Asolo Superiore DOCG Extra Brut Bio', price: '6,00 / 22,00 €', note: 'Calice / Bottiglia — Aperitivo 10 € — Take away 15 €' },
-      { name: 'HB Pils alla spina', price: '3,00 – 5,00 €', note: '0,2L / 0,4L', beer: true },
-      { name: 'America IPA 6,1%', price: '3,50 – 6,00 €', note: '0,2L / 0,4L', beer: true },
-      { name: 'Lattine War Artigianali', price: '5,00 €', note: 'Take away', beer: true },
+    ],
+  },
+  {
+    id: 'birre',
+    label: 'Birre',
+    Icon: IconBeer,
+    accent: '#9A7A0A',
+    items: [
+      { name: 'HB Pils alla spina', price: '3,00 – 5,00 €', note: '0,2L / 0,4L' },
+      { name: 'America IPA 6,1%', price: '3,50 – 6,00 €', note: '0,2L / 0,4L' },
+      { name: 'Lattine War Artigianali', price: '5,00 €', note: 'Take away' },
     ],
   },
 ]
@@ -326,20 +341,30 @@ export default function Menu() {
                 const isOpen = openItems.has(key)
                 const hasAccordion = !!item.subItems
 
-                const cardBg = isOpen
-                  ? `${current.accent}14`
-                  : active === 'vini'
-                    ? item.beer ? '#FEFAE8' : item.white ? '#EEF5E8' : '#FBE9EF'
-                    : '#fff'
-                const cardBorder = isOpen
-                  ? `1.5px solid ${current.accent}40`
-                  : active === 'vini'
-                    ? item.beer
-                      ? '1.5px solid rgba(180,140,20,0.2)'
-                      : item.white
-                        ? '1.5px solid rgba(80,120,50,0.18)'
-                        : '1.5px solid rgba(91,35,51,0.14)'
-                    : `1.5px solid rgba(60,36,21,0.08)`
+                const isDarkCard = active === 'vini' && item.rosso
+                const cardBg = isDarkCard
+                  ? '#5B1E2E'
+                  : isOpen
+                    ? `${current.accent}14`
+                    : active === 'vini'
+                      ? item.rosato ? '#FBE9EF' : '#fff'
+                      : active === 'birre'
+                        ? '#FFF2A0'
+                        : '#fff'
+                const cardBorder = isDarkCard
+                  ? '1.5px solid rgba(255,255,255,0.08)'
+                  : isOpen
+                    ? `1.5px solid ${current.accent}40`
+                    : active === 'vini'
+                      ? item.rosato
+                        ? '1.5px solid rgba(91,35,51,0.14)'
+                        : '1.5px solid rgba(60,36,21,0.08)'
+                      : active === 'birre'
+                        ? '1.5px solid rgba(154,122,10,0.28)'
+                        : '1.5px solid rgba(60,36,21,0.08)'
+                const textColor = isDarkCard ? '#FDF8F0' : '#3C2415'
+                const noteColor = isDarkCard ? 'rgba(253,248,240,0.55)' : 'rgba(60,36,21,0.45)'
+                const priceColor = isDarkCard ? '#F0B8A0' : current.accent
 
                 return (
                   <motion.div
@@ -351,9 +376,11 @@ export default function Menu() {
                       borderRadius: 14,
                       background: cardBg,
                       border: cardBorder,
-                      boxShadow: isOpen
-                        ? `0 4px 16px ${current.accent}22`
-                        : '0 2px 10px rgba(60,36,21,0.07)',
+                      boxShadow: isDarkCard
+                        ? '0 4px 16px rgba(0,0,0,0.25)'
+                        : isOpen
+                          ? `0 4px 16px ${current.accent}22`
+                          : '0 2px 10px rgba(60,36,21,0.07)',
                       cursor: hasAccordion ? 'pointer' : 'default',
                       transition: 'background 0.25s ease, border 0.25s ease, box-shadow 0.25s ease',
                     }}
@@ -363,7 +390,7 @@ export default function Menu() {
                         <p style={{
                           fontSize: 14,
                           fontWeight: 500,
-                          color: '#3C2415',
+                          color: textColor,
                           margin: 0,
                           lineHeight: 1.4,
                         }}>
@@ -372,7 +399,7 @@ export default function Menu() {
                         {item.note && (
                           <p style={{
                             fontSize: 12,
-                            color: 'rgba(60,36,21,0.45)',
+                            color: noteColor,
                             margin: '4px 0 0',
                             lineHeight: 1.4,
                           }}>
@@ -384,14 +411,14 @@ export default function Menu() {
                         <span style={{
                           fontSize: 14,
                           fontWeight: 700,
-                          color: current.accent,
+                          color: priceColor,
                           whiteSpace: 'nowrap',
                           fontFamily: "'Playfair Display', serif",
                         }}>
                           {item.price}
                         </span>
                         {hasAccordion && (
-                          <span style={{ color: current.accent }}>
+                          <span style={{ color: priceColor }}>
                             <IconChevron open={isOpen} />
                           </span>
                         )}
