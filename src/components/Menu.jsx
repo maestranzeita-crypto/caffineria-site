@@ -60,30 +60,20 @@ const CATEGORIES = [
     Icon: IconCup,
     accent: '#722F37',
     items: [
-      { name: 'Caffè 100% Arabica', price: '1,30 €' },
-      { name: 'Decaffeinato Agust', price: '1,40 €' },
-      { name: 'Americano', price: '1,50 €' },
-      { name: 'Corretto', price: '1,70 €' },
-      { name: 'Macchiatone', price: '1,50 €' },
-      { name: 'Cappuccino', price: '1,80 €' },
-      { name: 'Latte Macchiato', price: '2,20 €' },
-      { name: 'Americano Macchiato', price: '1,70 €' },
-      { name: 'Marocchino', price: '1,60 €', note: 'Deca/Orzo 1,70 €' },
-      { name: 'Orzo / Ginseng', price: '1,50 – 2,00 €', note: 'Piccolo / Grande' },
-      { name: 'Cappuccino Orzo / Ginseng', price: '2,20 €' },
+      { name: 'Cappuccino', price: '1,80 €', note: 'Soia 2,00 € — Avena 2,10 € — Mandorla 2,20 €' },
+      { name: 'Latte Macchiato', price: '2,20 €', note: 'Soia 2,40 € — Avena 2,50 € — Mandorla 2,60 €' },
+      { name: 'Marocchino', price: '1,60 €', note: 'Decaffeinato 1,70 € — Orzo 2,00 €' },
       { name: 'Latte Bianco', price: '0,50 – 1,50 €', note: 'Piccolo / Medio / Grande' },
       { name: 'Filtrato', price: '1,70 – 2,10 €', note: 'Medio / Grande' },
-      { name: 'Shakerato Caffè', price: '3,30 €' },
-      { name: 'Shakerato Ginseng', price: '3,50 €' },
-      { name: 'Shakerato con Baileys', price: '4,60 €' },
-      { name: 'Cioccolata', price: '3,00 €', note: 'Con panna 3,50 €' },
-      { name: 'Tè Caldo / Tisane', price: '2,50 €' },
+      { name: 'Orzo', price: '1,50 – 2,00 €', note: 'Piccolo / Grande — Cappuccino 2,20 € — Latte Macchiato 2,40 €' },
+      { name: 'Ginseng', price: '1,50 – 2,00 €', note: 'Piccolo / Grande — Cappuccino 2,20 € — Latte Macchiato 2,40 €' },
+      { name: 'Shakerato', price: '2,60 €', note: 'con Baileys 3,70 €' },
+      { name: 'Shakerato Ginseng', price: '3,50 €', note: 'con Baileys 4,60 €' },
       { name: 'Tè Matcha', price: '3,50 €' },
-      { name: 'Matcha Cappuccino', price: '2,10 €', note: 'Versione latte 2,40 €' },
-      { name: 'Golden Milk Cappuccino', price: '2,10 €', note: 'Versione latte 2,40 €' },
-      { name: 'Leche e Leche', price: '2,50 €' },
-      { name: 'Caffinero', price: '2,80 €' },
-      { name: 'Aggiunta Ghiaccio', price: '+0,40 €' },
+      { name: 'Matcha Cappuccino', price: '2,20 €' },
+      { name: 'Matcha Latte', price: '2,50 €' },
+      { name: 'Golden Milk Cappuccino', price: '2,20 €' },
+      { name: 'Golden Milk Latte', price: '2,50 €' },
     ],
   },
   {
@@ -92,14 +82,14 @@ const CATEGORIES = [
     Icon: IconLeaf,
     accent: '#3A7D55',
     items: [
-      { name: 'Spremuta', price: '4,00 – 5,00 €', note: 'Piccola / Grande' },
-      { name: 'Succo', price: '3,00 €' },
-      { name: 'Yogurt', price: '4,00 €', note: 'Con granola, miele e marmellata' },
-      { name: 'Acqua Menta', price: '1,50 €' },
-      { name: 'Menta Latte', price: '2,50 €' },
-      { name: 'Aggiunta Latte di Soia', price: '+0,20 €' },
-      { name: 'Aggiunta Latte di Avena', price: '+0,30 €' },
-      { name: 'Aggiunta Latte di Mandorla', price: '+0,40 €' },
+      { name: 'Yogurt Bianco con Granola, Miele e Marmellata', price: '4,00 €' },
+      {
+        name: 'Soft Drinks', price: '3,00 €',
+        subItems: ['Cola', 'Cola Light', 'Lemon Soda', 'Cedrata', 'San Bitter', 'Crodino', 'Campari Soda', 'Acqua Tonica', 'Ginger Beer'],
+      },
+      { name: 'Red Bull', price: '3,50 €' },
+      { name: 'Chinotto Bio', price: '4,00 €' },
+      { name: 'Acqua Naturale / Frizzante', price: '1,00 €' },
     ],
   },
   {
@@ -108,12 +98,18 @@ const CATEGORIES = [
     Icon: IconCake,
     accent: '#B5500E',
     items: [
-      { name: 'Torte Artigianali', price: '3,50 €', subItems: ['Carrot Cake', 'Mela / Cannella', 'Limone'] },
-      { name: 'Biscotti Cocco e Limone / Burro', price: '1,80 €' },
-      { name: 'Biscotti Gocce di Cioccolato', price: '2,00 €' },
-      { name: 'Muffin Artigianali', price: '3,50 €', note: 'Cioccolato, Mirtillo, Red Velvet' },
-      { name: 'Muffin Vegani', price: '3,50 €' },
-      { name: 'Pancake', price: '4,00 €', note: 'Aggiunta panna montata +0,50 €' },
+      { name: 'Torte Vegane Senza Glutine Artigianali', price: '3,50 €', subItems: ['Carrot Cake', 'Mela e Cannella'] },
+      { name: 'Torta Vegana Artigianale al Limone', price: '3,50 €' },
+      { name: 'Muffin Vegani', price: '3,50 €', subItems: ['Cioccolato e Pera', 'Cioccolato e Mirtillo', 'Cioccolato e Cocco'] },
+      { name: 'Muffin Artigianali', price: '3,50 €', subItems: ['Mirtillo', 'Cioccolato', 'Red Velvet'] },
+      { name: 'Biscotti Artigianali', price: '2,00 €', subItems: ['Gocce al Cioccolato', 'Al Burro', 'Cocco e Limone'] },
+      { name: 'Pancake con Miele e Sciroppo d\'Acero', price: '4,00 €' },
+      { name: 'Brioche / Cornetto', price: '1,50 €' },
+      { name: 'Fagottino / Fazzoletto', price: '1,70 €' },
+      { name: 'Mignon', price: '1,00 €' },
+      { name: 'Brioche Salata con Edamer e Cotto', price: '2,50 €', note: 'Solo weekend' },
+      { name: 'Maxi Toast con Edamer e Cotto', price: '4,50 €' },
+      { name: 'Maxi Toast Farcito', price: '5,00 €' },
     ],
   },
   {
@@ -122,12 +118,12 @@ const CATEGORIES = [
     Icon: IconSun,
     accent: '#8B6914',
     badge: 'Sab & Dom — 9:30 / 11:30',
-    footer: 'Incluso: biscotto artigianale al burro + Spremuta e Caffè filtrato.',
+    footer: 'Ogni brunch include: Biscotto al Burro + Spremuta + Caffè Filtrato.',
     items: [
       { name: 'Toast', price: '11,00 €' },
-      { name: 'Bagel Salato', price: '12,00 €' },
-      { name: 'Pancakes', price: '10,50 €' },
-      { name: 'Pane, Burro e Marmellata', price: '10,00 €' },
+      { name: 'Bagel a scelta', price: '12,00 €' },
+      { name: 'Pancake con Miele e Sciroppo d\'Acero', price: '10,50 €' },
+      { name: 'Pane Burro e Marmellata', price: '10,00 €' },
     ],
   },
   {
@@ -136,40 +132,37 @@ const CATEGORIES = [
     Icon: IconPlate,
     accent: '#3C2415',
     items: [
-      { name: 'Insalata Vegetariana', price: '7,50 €' },
-      { name: 'Insalata Salmone', price: '8,00 €' },
-      { name: 'Piatto di Bresaola', price: '8,00 €', note: 'Rucola, grana, limone' },
+      { name: 'Insalata Vegetariana', price: '7,50 €', note: 'Insalata verde, pomodori secchi, mela, Grana, glassa di aceto balsamico' },
+      { name: 'Insalata Salmone', price: '8,00 €', note: 'Insalata verde, finocchio, salmone affumicato, avocado, glassa di aceto balsamico' },
+      { name: 'Piatto di Bresaola', price: '8,00 €', note: 'Rucola, bresaola, scaglie di Grana, limone' },
       { name: 'Piatto Acciughe', price: '8,00 €', note: 'Finocchio, arancia, acciughe' },
-      { name: 'Bagel Salmone', price: '7,00 €' },
-      { name: 'Bagel Mousse Tonno', price: '6,50 €' },
-      { name: 'Bagel Crudo', price: '7,00 €', note: 'Crudo, Brie, Miele' },
-      { name: 'Bagel Pesto', price: '6,50 €' },
-      { name: 'Bagel Bresaola', price: '7,00 €' },
+      { name: 'Bagel Salmone', price: '7,00 €', note: 'Formaggio spalmabile, salmone affumicato, avocado' },
+      { name: 'Bagel Mousse Tonno', price: '6,50 €', note: 'Formaggio spalmabile, capperi, tonno' },
+      { name: 'Bagel Pesto', price: '6,50 €', note: 'Pesto, pomodori secchi, scaglie di Grana' },
+      { name: 'Bagel Bresaola', price: '7,00 €', note: 'Rucola, caprino e formaggio spalmabile, bresaola, limone' },
+      { name: 'Bagel Crudo', price: '7,00 €', note: 'Crudo, Brie, miele' },
       { name: 'Maxi Toast', price: '4,50 €' },
+      { name: 'Maxi Toast Farcito', price: '5,00 €' },
       { name: 'Panino', price: 'da 6,50 €' },
       { name: 'Focaccia Farcita', price: 'da 4,50 €' },
       { name: 'Piadina', price: '6,50 €' },
     ],
   },
   {
-    id: 'aperitivo',
-    label: 'Aperitivo',
+    id: 'spritz',
+    label: 'Spritz e Cocktail',
     Icon: IconCocktail,
     accent: '#9B3A6A',
     items: [
-      { name: 'Spritz', price: '6,00 €', note: 'Aperol, Campari, Vermouth, Cynar, Select — +4 € Tagliere' },
-      { name: 'Gin Tonic / Vodka Tonic', price: 'da 7,00 €' },
-      { name: 'Negroni / Sbagliato', price: '7,00 €' },
-      { name: 'Mojito', price: '10,00 €' },
-      { name: 'Vermouth Cocchi', price: '4,50 €' },
-      { name: 'Amari Classici', price: '4,00 €' },
-      { name: 'Amari Artigianali', price: '5,00 €', note: 'Jefferson, Taneda, Nonino, Venti' },
-      { name: 'Pisco / Grappe', price: '4,50 €' },
-      { name: 'Rum Diplomatico / Whisky', price: '7,00 €' },
-      { name: 'Shot Classici', price: '3,00 €' },
-      { name: 'Shot Artigianali', price: '3,50 €' },
-      { name: 'Shot Tequila', price: '3,00 €' },
-      { name: 'Shot Diplomatico', price: '5,00 €' },
+      { name: 'Spritz Agn Ugo', price: '6,00 €' },
+      { name: 'Vodka Tonic Lemon', price: '8,00 €' },
+      { name: 'Gin Tonic Columbus', price: '7,00 €' },
+      { name: 'Gin Tonic Tanqueray', price: '8,00 €' },
+      { name: 'Gin Tonic Hendrick\'s', price: '9,00 €' },
+      { name: 'Gin Tonic Mare', price: '10,00 €' },
+      { name: 'Paloma', price: '9,00 €' },
+      { name: 'Moscow Mule', price: '9,00 €' },
+      { name: 'Negroni / Sbagliato / Americano', price: '7,00 €' },
     ],
   },
   {
@@ -177,7 +170,11 @@ const CATEGORIES = [
     label: 'Vini & Birre',
     Icon: IconWine,
     accent: '#5B2333',
+    intro: 'Tutti i nostri vini sono vini giovani denominazione di origine controllata.',
     items: [
+      { name: 'Pecorino Bio Ciprea', price: '5,00 / 20,00 €', note: 'Simone Capecci — Marche | Calice / Bottiglia — Aperitivo 9 € — Take away 15 €', white: true },
+      { name: 'Vermentino Bio Sardegna Naturale', price: '6,00 / 24,00 €', note: 'Cantina del Rimedio | Calice / Bottiglia — Aperitivo 10 € — Take away 18 €', white: true },
+      { name: 'Greco Bianco DOC Bio', price: '6,00 / 24,00 €', note: 'C. Brigante — Calabria | Calice / Bottiglia — Aperitivo 10 € — Take away 18 €', white: true },
       { name: 'Montepulciano DOC', price: '5,00 / 20,00 €', note: 'Calice / Bottiglia — Aperitivo 9 € — Take away 15 €' },
       { name: 'Valpolicella', price: '6,00 / 24,00 €', note: 'Calice / Bottiglia — Aperitivo 10 € — Take away 18 €' },
       { name: 'Morellino di Scansano Bio', price: '6,00 / 24,00 €', note: 'Calice / Bottiglia — Aperitivo 10 € — Take away 18 €' },
@@ -302,6 +299,20 @@ export default function Menu() {
               </motion.div>
             )}
 
+            {/* Intro note */}
+            {current.intro && (
+              <motion.p variants={itemVariants} style={{
+                textAlign: 'center',
+                fontSize: 13,
+                color: 'rgba(60,36,21,0.55)',
+                marginBottom: 28,
+                fontStyle: 'italic',
+                lineHeight: 1.6,
+              }}>
+                {current.intro}
+              </motion.p>
+            )}
+
             {/* Grid items */}
             <div style={{
               display: 'grid',
@@ -316,14 +327,16 @@ export default function Menu() {
                 const cardBg = isOpen
                   ? `${current.accent}14`
                   : active === 'vini'
-                    ? item.beer ? '#FEFAE8' : '#FBE9EF'
+                    ? item.beer ? '#FEFAE8' : item.white ? '#EEF5E8' : '#FBE9EF'
                     : '#fff'
                 const cardBorder = isOpen
                   ? `1.5px solid ${current.accent}40`
                   : active === 'vini'
                     ? item.beer
                       ? '1.5px solid rgba(180,140,20,0.2)'
-                      : '1.5px solid rgba(91,35,51,0.14)'
+                      : item.white
+                        ? '1.5px solid rgba(80,120,50,0.18)'
+                        : '1.5px solid rgba(91,35,51,0.14)'
                     : `1.5px solid rgba(60,36,21,0.08)`
 
                 return (
