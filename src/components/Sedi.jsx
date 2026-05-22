@@ -164,6 +164,21 @@ export default function Sedi() {
                       ))}
                     </div>
                   </div>
+
+                  {/* Nota servizio */}
+                  <div style={{
+                    marginTop: 20,
+                    padding: '10px 14px',
+                    borderRadius: 10,
+                    background: 'rgba(114,47,55,0.08)',
+                    fontSize: 12,
+                    color: '#722F37',
+                    fontWeight: 600,
+                    letterSpacing: '0.04em',
+                    textAlign: 'center',
+                  }}>
+                    Solo servizio al banco
+                  </div>
                 </div>
               </div>
             </Reveal>
