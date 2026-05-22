@@ -240,28 +240,22 @@ export default function Menu() {
     <section style={{ padding: '56px 20px 100px', background: '#FDF8F0' }}>
       <div style={{ maxWidth: 900, margin: '0 auto' }}>
 
-        {/* Banner servizio */}
-        <motion.div
+        {/* Nota servizio */}
+        <motion.p
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           style={{
             margin: '0 auto 36px',
-            maxWidth: 560,
-            padding: '14px 22px',
-            borderRadius: 14,
-            background: '#722F37',
-            color: '#FDF8F0',
             textAlign: 'center',
-            fontSize: 14,
+            fontSize: 15,
             fontWeight: 600,
-            letterSpacing: '0.06em',
-            textTransform: 'uppercase',
-            boxShadow: '0 6px 20px rgba(114,47,55,0.28)',
+            color: '#000',
+            letterSpacing: '0.04em',
           }}
         >
           Effettuiamo solo servizio al banco
-        </motion.div>
+        </motion.p>
 
         {/* Tab bar */}
         <motion.div
