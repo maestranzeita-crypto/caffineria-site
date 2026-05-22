@@ -47,7 +47,7 @@ export default function Footer() {
               @caffineria
             </a>
             <a
-              href="tel:0249420043"
+              href="tel:0283962022"
               style={{
                 display: 'flex', alignItems: 'center', gap: 8,
                 fontSize: 14,
@@ -56,7 +56,19 @@ export default function Footer() {
               }}
             >
               <PhoneIcon />
-              02 4942 0043
+              02 8396 2022
+            </a>
+            <a
+              href="tel:3762756844"
+              style={{
+                display: 'flex', alignItems: 'center', gap: 8,
+                fontSize: 14,
+                color: 'rgba(253,248,240,0.65)',
+                textDecoration: 'none',
+              }}
+            >
+              <PhoneIcon />
+              376 275 6844
             </a>
           </div>
         </Reveal>

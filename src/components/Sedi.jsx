@@ -5,7 +5,7 @@ const SEDI = [
     nome: 'Martesana',
     indirizzo: 'Via Privata Prandina 1',
     citta: 'Milano',
-    telefono: '02 4942 0043',
+    telefoni: ['02 8396 2022', '376 275 6844'],
     orari: [
       { g: 'Lunedì',    o: '7:30 – 15:00' },
       { g: 'Mar – Gio', o: '7:30 – 22:30' },
@@ -122,19 +122,23 @@ export default function Sedi() {
                     </span>
                   </div>
 
-                  {/* Telefono */}
-                  {sede.telefono && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
-                      <span style={{ color: '#722F37' }}><PhoneIcon /></span>
-                      <a
-                        href={`tel:${sede.telefono.replace(/\s/g, '')}`}
-                        style={{ fontSize: 14, color: 'rgba(60,36,21,0.7)', textDecoration: 'none' }}
-                      >
-                        {sede.telefono}
-                      </a>
+                  {/* Telefoni */}
+                  {sede.telefoni && sede.telefoni.length > 0 && (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 24 }}>
+                      {sede.telefoni.map((tel) => (
+                        <div key={tel} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                          <span style={{ color: '#722F37' }}><PhoneIcon /></span>
+                          <a
+                            href={`tel:${tel.replace(/\s/g, '')}`}
+                            style={{ fontSize: 14, color: 'rgba(60,36,21,0.7)', textDecoration: 'none' }}
+                          >
+                            {tel}
+                          </a>
+                        </div>
+                      ))}
                     </div>
                   )}
-                  {!sede.telefono && <div style={{ marginBottom: 24 }} />}
+                  {(!sede.telefoni || sede.telefoni.length === 0) && <div style={{ marginBottom: 24 }} />}
 
                   {/* Orari */}
                   <div style={{

@@ -70,7 +70,7 @@ const CATEGORIES = [
       { name: 'Cappuccino', price: '1,80 €', note: 'Soia 2,00 € — Avena 2,10 € — Mandorla 2,20 €' },
       { name: 'Latte Macchiato', price: '2,20 €', note: 'Soia 2,40 € — Avena 2,50 € — Mandorla 2,60 €' },
       { name: 'Marocchino', price: '1,60 €', note: 'Decaffeinato 1,70 € — Orzo 2,00 €' },
-      { name: 'Latte Bianco', price: '0,50 – 1,50 €', note: 'Piccolo / Medio / Grande' },
+      { name: 'Latte Bianco', price: '0,50 / 1,00 / 1,50 €', note: 'Piccolo / Medio / Grande' },
       { name: 'Filtrato', price: '1,70 – 2,10 €', note: 'Medio / Grande' },
       { name: 'Orzo', price: '1,50 – 2,00 €', note: 'Piccolo / Grande — Cappuccino 2,20 € — Latte Macchiato 2,40 €' },
       { name: 'Ginseng', price: '1,50 – 2,00 €', note: 'Piccolo / Grande — Cappuccino 2,20 € — Latte Macchiato 2,40 €' },
@@ -89,7 +89,7 @@ const CATEGORIES = [
     Icon: IconLeaf,
     accent: '#3A7D55',
     items: [
-      { name: 'Yogurt Bianco con Granola, Miele e Marmellata', price: '4,00 €' },
+      { name: 'Yogurt Bianco con Granola, Miele o Marmellata', price: '4,00 €' },
       {
         name: 'Soft Drinks', price: '3,00 €',
         subItems: ['Cola', 'Cola Light', 'Lemon Soda', 'Cedrata', 'San Bitter', 'Crodino', 'Campari Soda', 'Acqua Tonica', 'Ginger Beer'],
@@ -110,7 +110,7 @@ const CATEGORIES = [
       { name: 'Muffin Vegani', price: '3,50 €', subItems: ['Cioccolato e Pera', 'Cioccolato e Mirtillo', 'Cioccolato e Cocco'] },
       { name: 'Muffin Artigianali', price: '3,50 €', subItems: ['Mirtillo', 'Cioccolato', 'Red Velvet'] },
       { name: 'Biscotti Artigianali', price: '2,00 €', subItems: ['Gocce al Cioccolato', 'Al Burro', 'Cocco e Limone'] },
-      { name: 'Pancake con Miele e Sciroppo d\'Acero', price: '4,00 €' },
+      { name: 'Pancake con Miele o Sciroppo d\'Acero', price: '4,00 €' },
       { name: 'Brioche / Cornetto', price: '1,50 €' },
       { name: 'Fagottino / Fazzoletto', price: '1,70 €' },
       { name: 'Mignon', price: '1,00 €' },
@@ -129,7 +129,7 @@ const CATEGORIES = [
     items: [
       { name: 'Toast', price: '11,00 €' },
       { name: 'Bagel a scelta', price: '12,00 €' },
-      { name: 'Pancake con Miele e Sciroppo d\'Acero', price: '10,50 €' },
+      { name: 'Pancake con Miele o Sciroppo d\'Acero', price: '10,50 €' },
       { name: 'Pane Burro e Marmellata', price: '10,00 €' },
     ],
   },
@@ -161,8 +161,8 @@ const CATEGORIES = [
     Icon: IconCocktail,
     accent: '#9B3A6A',
     items: [
-      { name: 'Ugo Spritz', price: '6,00 €' },
-      { name: 'Vodka Tonic Lemon', price: '8,00 €' },
+      { name: 'Hugo Spritz', price: '6,00 €' },
+      { name: 'Vodka Lemon', price: '8,00 €' },
       { name: 'Gin Tonic Columbus', price: '7,00 €' },
       { name: 'Gin Tonic Tanqueray', price: '8,00 €' },
       { name: 'Gin Tonic Hendrick\'s', price: '9,00 €' },
@@ -199,7 +199,7 @@ const CATEGORIES = [
     items: [
       { name: 'HB Pils alla spina', price: '3,00 – 5,00 €', note: '0,2L / 0,4L' },
       { name: 'America IPA 6,1%', price: '3,50 – 6,00 €', note: '0,2L / 0,4L' },
-      { name: 'Lattine War Artigianali', price: '5,00 €', note: 'Take away' },
+      { name: 'Lattine War Artigianali', price: 'Non disponibili', note: 'Take away — attualmente non disponibili' },
     ],
   },
 ]
