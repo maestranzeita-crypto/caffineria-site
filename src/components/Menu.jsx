@@ -67,6 +67,11 @@ const CATEGORIES = [
     Icon: IconCup,
     accent: '#722F37',
     items: [
+      { name: 'Caffè 100% Arabica', price: '1,30 €' },
+      { name: 'Decaffeinato', price: '1,40 €' },
+      { name: 'Americano', price: '1,50 €' },
+      { name: 'Americano Macchiato', price: '1,70 €' },
+      { name: 'Corretto', price: '1,70 €' },
       { name: 'Cappuccino', price: '1,80 €', note: 'Soia 2,00 € — Avena 2,10 € — Mandorla 2,20 €' },
       { name: 'Latte Macchiato', price: '2,20 €', note: 'Soia 2,40 € — Avena 2,50 € — Mandorla 2,60 €' },
       { name: 'Marocchino', price: '1,60 €', note: 'Decaffeinato 1,70 € — Orzo 2,00 €' },
@@ -81,6 +86,7 @@ const CATEGORIES = [
       { name: 'Matcha Latte', price: '2,50 €' },
       { name: 'Golden Milk Cappuccino', price: '2,20 €' },
       { name: 'Golden Milk Latte', price: '2,50 €' },
+      { name: 'Cioccolata', price: '3,00 €', note: 'con Panna Montata 3,50 €' },
     ],
   },
   {
