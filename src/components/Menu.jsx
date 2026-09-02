@@ -67,28 +67,31 @@ const CATEGORIES = [
     Icon: IconCup,
     accent: '#722F37',
     items: [
+      // Caffè
       { name: 'Caffè 100% Arabica', price: '1,30 €' },
       { name: 'Decaffeinato', price: '1,40 €' },
       { name: 'Americano', price: '1,50 €' },
       { name: 'Americano Macchiato', price: '1,70 €' },
       { name: 'Corretto', price: '1,70 €' },
-      { name: 'Cappuccino', price: '1,80 €', note: 'Soia 2,00 € — Avena 2,10 € — Mandorla 2,20 €' },
-      { name: 'Latte Macchiato', price: '2,30 €', note: 'Soia 2,40 € — Avena 2,50 € — Mandorla 2,60 €' },
       { name: 'Marocchino', price: '1,60 €', note: 'Decaffeinato 1,70 € — Orzo 2,00 €' },
-      { name: 'Latte Caldo', price: '0,60 / 1,10 / 1,60 €', note: 'Piccolo / Medio / Grande' },
       { name: 'Filtrato', price: '1,70 – 2,10 €', note: 'Medio / Grande' },
+      { name: 'Shakerato', price: '2,60 €', note: 'con Baileys 3,70 €' },
+      { name: 'Caffinero', price: '2,90 €' },
       { name: 'Orzo', price: '1,50 – 2,00 €', note: 'Piccolo / Grande — Cappuccino 2,20 € — Latte Macchiato 2,40 €' },
       { name: 'Ginseng', price: '1,50 – 2,00 €', note: 'Piccolo / Grande — Cappuccino 2,20 € — Latte Macchiato 2,30 €' },
-      { name: 'Shakerato', price: '2,60 €', note: 'con Baileys 3,70 €' },
       { name: 'Shakerato Ginseng', price: '3,50 €', note: 'con Baileys 4,60 €' },
+      // Latte
+      { name: 'Cappuccino', price: '1,80 €', note: 'Soia 2,00 € — Avena 2,10 € — Mandorla 2,20 €' },
+      { name: 'Latte Macchiato', price: '2,30 €', note: 'Soia 2,40 € — Avena 2,50 € — Mandorla 2,60 €' },
+      { name: 'Latte Caldo', price: '0,60 / 1,10 / 1,60 €', note: 'Piccolo / Medio / Grande' },
+      { name: 'Leche e Leche', price: '2,60 €' },
+      { name: 'Cioccolata', price: '3,00 €', note: 'con Panna Montata 3,50 €' },
+      // Tè
       { name: 'Tè Matcha', price: '3,50 €' },
       { name: 'Matcha Cappuccino', price: '2,20 €' },
       { name: 'Matcha Latte', price: '2,50 €' },
       { name: 'Golden Milk Cappuccino', price: '2,20 €' },
       { name: 'Golden Milk Latte', price: '2,50 €' },
-      { name: 'Cioccolata', price: '3,00 €', note: 'con Panna Montata 3,50 €' },
-      { name: 'Leche e Leche', price: '2,60 €' },
-      { name: 'Caffinero', price: '2,90 €' },
     ],
   },
   {
@@ -359,6 +362,23 @@ export default function Menu() {
               </motion.p>
             )}
 
+            {/* Footer note (brunch) — mostrata sopra la griglia, in evidenza */}
+            {current.footer && (
+              <motion.p
+                variants={itemVariants}
+                style={{
+                  textAlign: 'center',
+                  fontSize: 17,
+                  fontWeight: 700,
+                  color: current.accent,
+                  marginBottom: 28,
+                  lineHeight: 1.5,
+                }}
+              >
+                {current.footer}
+              </motion.p>
+            )}
+
             {/* Grid items */}
             <div style={{
               display: 'grid',
@@ -493,23 +513,6 @@ export default function Menu() {
                 )
               })}
             </div>
-
-            {/* Footer note */}
-            {current.footer && (
-              <motion.p
-                variants={itemVariants}
-                style={{
-                  textAlign: 'center',
-                  fontSize: 13,
-                  color: 'rgba(60,36,21,0.5)',
-                  marginTop: 28,
-                  fontStyle: 'italic',
-                  lineHeight: 1.6,
-                }}
-              >
-                {current.footer}
-              </motion.p>
-            )}
           </motion.div>
         </AnimatePresence>
 
